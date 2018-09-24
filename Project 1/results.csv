@@ -1,0 +1,4 @@
+Input Size, Average Time(ArrayQueue), Average Time(DoublingQueue), Average Time(Linked List), , T1 for incarray , T1 for doubarray, T1 for linkedlist , , T2 for IA , T2 for DA, T2 for LL, , T3 for IA, T3 for DA, T3 for LL
+100000, , , ,,  0.004459, 0.002804, 0.006663, ,  0.003665, 0.002163, 0.004004, ,  0.003806, 0.002160, 0.003768, 
+200000, , , ,,  0.010114, 0.004404, 0.010296, ,  0.011338, 0.004812, 0.006293, ,  0.010784, 0.005496, 0.010048, 
+300000, , , ,,  0.019976, 0.007076, 0.014930, ,  0.021014, 0.006169, 0.009534, ,  0.022135, 0.006953, 0.016557, 
