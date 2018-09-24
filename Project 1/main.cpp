@@ -45,7 +45,7 @@ int main(){
             logs << input;
             logs << seperator;
 
-            for(int j=0;j<3;j++){
+            for(int j=0;j<6;j++){
 
                 stopwatch.Reset();
                 for (int i=1;i<=input;i++){
@@ -79,7 +79,7 @@ int main(){
             }
             logs << "\n";
             input+=100000;
-        }//end for loop
+        }//end for loop and adding some extra stuff
 
 
 
