@@ -4,25 +4,25 @@
 #include "stopwatch.h"
 #include <iostream>
 #include <string>
-#include <cstdlib> 
+#include <cstdlib>
 #include <ctime>
 #include <iostream>
 #include <fstream>
 
 int main(){
-    
+
     try{
         CStopWatch whole;
         whole.Reset();
 
-        //opening a CSV file to output the times. 
+        //opening a CSV file to output the times.
         std::ofstream logs;
         logs.open("results.csv");
         logs << "Input Size, Average Time(ArrayQueue), Average Time(DoublingQueue), Average Time(Linked List), , T1 for incarray , T1 for doubarray, T1 for linkedlist , , T2 for IA , T2 for DA, T2 for LL, , T3 for IA, T3 for DA, T3 for LL\n";
         CStopWatch stopwatch; //initializing stopwatch instance
-        
-        srand((unsigned)time(0)); 
-        int random_integer; 
+
+        srand((unsigned)time(0));
+        int random_integer;
         int input = 100000;
         std::string s1; //saves seconds for the ArrayQueue
         std::string s2; //saves seconds for the doublingarray
@@ -40,7 +40,7 @@ int main(){
         Every loop, the objects will be deconstructed and reinitalized at the same initial size to start from scratch.
         //as i increases the input size will increase by 100,000 until i times.
         Test case variables used: i = 100, j = 3. */
-        
+
         for (int i = 0; i<3;i++){
             logs << input;
             logs << seperator;
@@ -49,14 +49,14 @@ int main(){
 
                 stopwatch.Reset();
                 for (int i=1;i<=input;i++){
-                random_integer = (rand()%50)+1; 
+                random_integer = (rand()%50)+1;
                 incqueue.enqueue(random_integer);
                 }
                 s1 = std::to_string(stopwatch.GetElapsedSeconds());
-                
+
                 stopwatch.Reset();
                 for (int i=1;i<=input;i++){
-                    random_integer = (rand()%50)+1; 
+                    random_integer = (rand()%50)+1;
                     doubqueue.enqueue(random_integer);
                 }
                 s2 = std::to_string(stopwatch.GetElapsedSeconds());
@@ -80,9 +80,9 @@ int main(){
             logs << "\n";
             input+=100000;
         }//end for loop
-        
-            
-                
+
+
+
         //sdf
         //doing basic operations for the different queues
         incqueue.enqueue(6);
@@ -126,13 +126,13 @@ int main(){
         stopwatch.Reset();
         std::cout << std::to_string(whole.GetElapsedSeconds()) << "\n";
         //closing the CSV file
+        //extra comments here
+        
         logs.close();
         return 0;
     }
     catch (StackException& se) {
         se.what();
     }
-      
+
 }
-
-
