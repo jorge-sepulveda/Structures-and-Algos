@@ -80,10 +80,8 @@ int main(){
             logs << "\n";
             input+=100000;
         }//end for loop and adding some extra stuff
+        //by this point, the items are already updated
 
-
-
-        //sdf
         //doing basic operations for the different queues
         incqueue.enqueue(6);
         incqueue.enqueue(9);
