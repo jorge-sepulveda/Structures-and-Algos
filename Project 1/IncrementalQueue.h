@@ -41,19 +41,19 @@ class IncrementalQueue : public AbstractQueue<Type>{
 //constructor for the queue
 template <class Type>
 IncrementalQueue<Type>::IncrementalQueue(int s){
-    this->items = new Type[s];
-    this->front = 0;
-    this->back = -1;
-    this->capacity = s;
-    this->count = 0;
+    items = new Type[s];
+    front = 0;
+    back = -1;
+    capacity = s;
+    count = 0;
     //std::cout << "made the incremental queue!" << std::endl;
 }
 
 //prints all the elements in the queue
 template <class Type>
 void IncrementalQueue<Type>::printElements(){
-    for (int i=this->front; i<=this->back;i++){
-        std::cout << this->items[i] << std::endl;
+    for (int i=front; i<=back;i++){
+        std::cout << items[i] << std::endl;
     }
 }
 
@@ -64,7 +64,7 @@ Type IncrementalQueue<Type>::frontelem(){
         throw ArrayException("Empty Stack! exiting the program");
     }
     else{
-        return this->items[this->front];
+        return items[front];
     }
 }
 
@@ -73,17 +73,17 @@ Type IncrementalQueue<Type>::frontelem(){
 template <class Type>
 void IncrementalQueue<Type>::enqueue(Type e){
     
-    if (this->count == this->capacity){
+    if (count == capacity){
         resize();
-        this->back = (this->back + 1) % this->capacity;
-        this->items[this->back] = e;
-        this->count++;
+        back = (back + 1) % capacity;
+        items[back] = e;
+        count++;
         //std::cout << e << std::endl;
     } 
     else{
-        this->back = (this->back + 1) % this->capacity;
-        this->items[this->back] = e;
-        this->count++;
+        back = (back + 1) % capacity;
+        items[back] = e;
+        count++;
         //std::cout << e << std::endl;
     }
     
@@ -99,10 +99,10 @@ Type IncrementalQueue<Type>::dequeue(){
         throw ArrayException ("ArrayException: Empty Stack");
     }
 
-    Type itemDequeued = this->items[this->front];
-    //std::cout << "removed " << this->items[this->front] << " from the queue" << std::endl;
-    this->front = (this->front + 1) % this->capacity;
-    this->count--;
+    Type itemDequeued = items[front];
+    //std::cout << "removed " << items[front] << " from the queue" << std::endl;
+    front = (front + 1) % capacity;
+    count--;
 
     return itemDequeued;
 }
@@ -110,7 +110,7 @@ Type IncrementalQueue<Type>::dequeue(){
 //checks if the queue is empty
 template <class Type>
 bool IncrementalQueue<Type>::empty(){
-    if (this->count == 0) {
+    if (count == 0) {
         //std::cout << "empty!" << std::endl;
         return true;
     }
@@ -122,16 +122,16 @@ bool IncrementalQueue<Type>::empty(){
 //creates a new array to replace the smaller array. 
 template <class Type>
 void IncrementalQueue<Type>::resize(){
-    if (this->count == this->capacity){
+    if (count == capacity){
         //std::cout << "full, gotta make a bigger  inc array" << std::endl;
-        tempArray = new Type[this->capacity+10000];
-        for (int i=0;i<this->capacity;i++){
-            tempArray[i] = this->items[i];
+        tempArray = new Type[capacity+10000];
+        for (int i=0;i<capacity;i++){
+            tempArray[i] = items[i];
         }
-        this->capacity+=10000;
-        //std::cout << "new size is: " << this->capacity << std::endl;
-        delete[] this->items;
-        this->items=tempArray;
+        capacity+=10000;
+        //std::cout << "new size is: " << capacity << std::endl;
+        delete[] items;
+        items=tempArray;
     }
 }
 
@@ -146,7 +146,7 @@ int IncrementalQueue<Type>::size(){
 //Destructor
 template <class Type>
 IncrementalQueue<Type>::~IncrementalQueue() {
-    delete[] this->items;
+    delete[] items;
     //std::cout << "inc queue destructor called" << std::endl;
 }
 
