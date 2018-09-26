@@ -61,7 +61,7 @@ void IncrementalQueue<Type>::printElements(){
 template <class Type>
 Type IncrementalQueue<Type>::frontelem(){
     if (empty()){
-        throw StackException("Empty Stack! exiting the program");
+        throw ArrayException("Empty Stack! exiting the program");
     }
     else{
         return this->items[this->front];
@@ -96,7 +96,7 @@ Type IncrementalQueue<Type>::dequeue(){
 	
     
     if( empty() ){
-        throw StackException ("StackException: Empty Stack");
+        throw ArrayException ("ArrayException: Empty Stack");
     }
 
     Type itemDequeued = this->items[this->front];
@@ -138,7 +138,7 @@ void IncrementalQueue<Type>::resize(){
 template <class Type>
 int IncrementalQueue<Type>::size(){
     if (empty()){
-        throw StackException ("StackException: Empty Stack");
+        throw ArrayException ("ArrayException: Empty Stack");
     }
     return count;
 }

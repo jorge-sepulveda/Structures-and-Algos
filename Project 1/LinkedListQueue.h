@@ -66,7 +66,7 @@ template <class Type>
 Type LinkedListQueue<Type>::dequeue(){
     
     if( empty() ){
-        throw StackException ("StackException: Empty Stack");
+        throw ArrayException ("ArrayException: Empty Stack");
     }
     
     else{
@@ -102,7 +102,7 @@ bool LinkedListQueue<Type>::empty(){
 template <class Type>
 int LinkedListQueue<Type>::size(){
     if (empty()){
-        throw StackException ("StackException: Empty Stack");
+        throw ArrayException ("ArrayException: Empty Stack");
     }
     return count;
 }

@@ -55,7 +55,7 @@ DoublingQueue<Type>::DoublingQueue(int s){
 template <class Type>
 Type DoublingQueue<Type>::frontelem(){
     if (empty()){
-        throw StackException("Empty Stack! exiting the program");
+        throw ArrayException("Empty Stack! exiting the program");
     }
     else{
         return items[front];
@@ -89,7 +89,7 @@ Type DoublingQueue<Type>::dequeue(){
     
     
     if( empty() ){
-        throw StackException ("StackException: Empty Stack");
+        throw ArrayException ("ArrayException: Empty Stack");
     }
     //std::cout << "removed " << items[front] << " from the queue" << std::endl;
     Type itemDequeued = items[front];
@@ -140,7 +140,7 @@ void DoublingQueue<Type>::printElements(){
 template <class Type>
 int DoublingQueue<Type>::size(){
     if (empty()){
-        throw StackException ("StackException: Empty Stack");
+        throw ArrayException ("ArrayException: Empty Stack");
     }
     return count;
 }

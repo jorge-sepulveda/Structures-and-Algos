@@ -130,7 +130,7 @@ int main(){
         logs.close();
         return 0;
     }
-    catch (StackException& se) {
+    catch (ArrayException& se) {
         se.what();
     }
 

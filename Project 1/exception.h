@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
 
-class StackException {
+class ArrayException {
     public:
-        StackException(std::string s) : str(s) {}
-        ~StackException() {}
+        ArrayException(std::string s) : str(s) {}
+        ~ArrayException() {}
         void what() {
             std::cout << str << std::endl;
         }
