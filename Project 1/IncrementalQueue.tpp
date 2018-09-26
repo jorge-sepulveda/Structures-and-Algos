@@ -1,45 +1,7 @@
-#ifndef _INCREMENTALQUEUE_H
-#define _INCREMENTALQUEUE_H
-
-#include "Queue.h"
-#include "exception.h"
-
-#include <iostream>
-
-template <class Type>
-class IncrementalQueue : public AbstractQueue<Type>{   
-    private:
-        Type *tempArray;
-        Type *items;
-        int front;
-        int back;
-        int capacity;
-        int count;
-    
-    public:
-    
-        IncrementalQueue(int s);
-           
-        ~IncrementalQueue();
-           
-        bool empty();
-        
-        int size();
-        
-        Type frontelem();
-        
-        Type dequeue(); 
-           
-        void enqueue ( Type e );
-           
-        void resize();
-           
-        void printElements();
-};
+#include "IncrementalQueue.h"
 
 
-#include "IncrementalQueue.tpp"
-/*
+
 //constructor for the queue
 template <class Type>
 IncrementalQueue<Type>::IncrementalQueue(int s){
@@ -151,10 +113,4 @@ IncrementalQueue<Type>::~IncrementalQueue() {
     delete[] items;
     //std::cout << "inc queue destructor called" << std::endl;
 }
-
-
-*/
-
-    
-#endif
 
