@@ -124,7 +124,6 @@ int main(){
         stopwatch.Reset();
         std::cout << std::to_string(whole.GetElapsedSeconds()) << "\n";
         //closing the CSV file
-        //forgot "this->"
         //extra comments here
         //more comments here.
         

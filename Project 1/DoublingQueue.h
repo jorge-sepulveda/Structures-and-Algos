@@ -150,6 +150,8 @@ template <class Type>
 DoublingQueue<Type>::~DoublingQueue() {
     delete[] items;
     //std::cout << "doubling queue destructor called" << std::endl;
+    
+    
 }
 
 #endif
