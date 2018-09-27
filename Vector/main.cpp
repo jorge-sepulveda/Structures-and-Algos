@@ -18,6 +18,7 @@ int main(){
 		cout << testVector.empty() << endl;
 
 		testVector.printElements();
+		testVector.insert(9,45);
 		testVector.erase(5);
 		cout << "printing elements again" << endl;
 		testVector.printElements();
