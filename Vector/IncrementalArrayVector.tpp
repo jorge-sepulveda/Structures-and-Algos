@@ -1,4 +1,4 @@
-#include "DoublingArrayVector.h"
+#include "IncrementalArrayVector.h"
 
 #include <iostream>
 
@@ -7,15 +7,15 @@
 
 //add a RESIZE TO THIS!
 template<class T>
-DoublingArrayVector<T>::DoublingArrayVector(int s){
+IncrementalArrayVector<T>::IncrementalArrayVector(int s){
 	items = new T[s];
 	capacity = s;
 	currentSize = 0;
-	std::cout<< "DoublingDoublingArrayVector created" << std::endl;
+	std::cout<< "IncrementalArrayVector created" << std::endl;
 }
 
 template<class T>
-T DoublingArrayVector<T>::at(int i){
+T IncrementalArrayVector<T>::at(int i){
 	if (i < 0 || i > currentSize){
 		throw VectorException("Vector Exception! Out of bounds");
 	}
@@ -23,14 +23,14 @@ T DoublingArrayVector<T>::at(int i){
 }
 
 template<class T>
-void DoublingArrayVector<T>::set(int i, T o){
+void IncrementalArrayVector<T>::set(int i, T o){
 	items[i] = o;
 	currentSize++;
 }
 
 //insert
 template<class T>
-void DoublingArrayVector<T>::insert(int i, T o){
+void IncrementalArrayVector<T>::insert(int i, T o){
 	if (currentSize >= capacity){
 		throw VectorException("Vector Exception! Vector is full");
 	}
@@ -44,7 +44,7 @@ void DoublingArrayVector<T>::insert(int i, T o){
 
 //erase
 template<class T>
-void DoublingArrayVector<T>::erase(int i){
+void IncrementalArrayVector<T>::erase(int i){
 	for (int j=i+1; j < currentSize;j++){
 		items[j-1] = items[j];
 	}
@@ -53,31 +53,31 @@ void DoublingArrayVector<T>::erase(int i){
 
 //size
 template<class T>
-int DoublingArrayVector<T>::size(){
+int IncrementalArrayVector<T>::size(){
 	return currentSize;
 }
 
 //empty
 template<class T>
-bool DoublingArrayVector<T>::empty(){
+bool IncrementalArrayVector<T>::empty(){
 	return (currentSize == 0);
 }
 
 //print elements
 template<class T>
-void DoublingArrayVector<T>::printElements(){
+void IncrementalArrayVector<T>::printElements(){
 	for (int i=0;i<currentSize;i++)
 		std::cout<< items[i] << std::endl;
 }
 
 //print elements
 template<class T>
-void DoublingArrayVector<T>::resize(){
-	tempArray = new T[capacity*2];
+void IncrementalArrayVector<T>::resize(int n){
+	tempArray = new T[capacity+n];
 	for (int i=0;i<currentSize;i++){
 		tempArray[i] = items[i];
 	}
-	capacity*=2;
+	capacity+=n;
 	delete[] items;
 	items = tempArray;
 	std::cout << "resized!" << std::endl;
@@ -86,8 +86,8 @@ void DoublingArrayVector<T>::resize(){
 }
 
 template <class T>
-DoublingArrayVector<T>::~DoublingArrayVector(){
+IncrementalArrayVector<T>::~IncrementalArrayVector(){
 	delete [] items;
-	std::cout<< "DoublingArrayVector destroyed" << std::endl;
+	std::cout<< "IncrementalArrayVector destroyed" << std::endl;
 
 }

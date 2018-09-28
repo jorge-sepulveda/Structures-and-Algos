@@ -1,5 +1,6 @@
 #include "ArrayVector.h"
 #include "DoublingArrayVector.h"
+#include "IncrementalArrayVector.h"
 
 #include <iostream>
 
@@ -10,10 +11,12 @@ int main(){
 	try{
 		ArrayVector<double> testVector(10);
 		DoublingArrayVector<int> testVector2(10);
+		IncrementalArrayVector<int> testVector3(10);
 
 		for(int i=0;i<10;i++){
 			testVector.insert(i,i);
 			testVector2.insert(i,5);
+			testVector3.insert(i,2);
 		}
 
 		cout << "index: " <<testVector.at(3) << endl;
@@ -24,12 +27,17 @@ int main(){
 		testVector.printElements();
 		cout << "Doubling Vector list" << endl;
 		testVector2.printElements();
+		cout << "inc Vector list" << endl;
+		testVector3.printElements();
 		//testVector.insert(9,45);
 		testVector.erase(5);
 		cout << "printing elements again" << endl;
 		testVector.printElements();
-		cout << testVector.at(10) << endl;
-
+		//cout << testVector3.at(50) << endl;
+		testVector2.resize();
+		testVector3.resize(50);
+		//dfdsf
+		
 	}
 	catch (VectorException& se) {
         se.what();

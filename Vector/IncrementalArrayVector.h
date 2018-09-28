@@ -1,12 +1,12 @@
-#ifndef _DOUBLING_ARRAY_VECTOR_H
-#define _DOUBLING_ARRAY_VECTOR_H
+#ifndef _INCREMENTAL_ARRAY_VECTOR_H
+#define _INCREMENTAL_ARRAY_VECTOR_H
 
 #include <iostream>
 
 #include "AbstractVector.h"
 
 template <class T>
-class DoublingArrayVector : public AbstractVector<T>{
+class IncrementalArrayVector : public AbstractVector<T>{
 	private:
 		T* items;
 		int capacity;
@@ -15,9 +15,9 @@ class DoublingArrayVector : public AbstractVector<T>{
 
 	public:
 
-	DoublingArrayVector(int s);
+	IncrementalArrayVector(int s);
 
-	~DoublingArrayVector();
+	~IncrementalArrayVector();
 
 	T at(int i);
     
@@ -33,10 +33,10 @@ class DoublingArrayVector : public AbstractVector<T>{
 
     void printElements();
     
-    void resize();
+    void resize(int n);
 
 };
 
-#include "DoublingArrayVector.tpp"
+#include "IncrementalArrayVector.tpp"
 
 #endif

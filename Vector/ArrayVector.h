@@ -1,5 +1,5 @@
-#ifndef _ARRAYVECTOR_H
-#define _ARRAYVECTOR_H
+#ifndef _ARRAY_VECTOR_H
+#define _ARRAY_VECTOR_H
 
 #include <iostream>
 
