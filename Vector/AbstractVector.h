@@ -1,3 +1,7 @@
+#ifndef _ABSTRACT_VECTOR_H
+#define _ABSTRACT_VECTOR_H
+
+
 //Inherit the below class in all your vector implementations
 template <class T>
 class AbstractVector {
@@ -16,3 +20,5 @@ class AbstractVector {
     virtual bool empty() = 0;
     
 };
+
+#endif
