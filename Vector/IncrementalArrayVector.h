@@ -12,6 +12,7 @@ class IncrementalArrayVector : public AbstractVector<T>{
 		int capacity;
 		int currentSize;
 		T* tempArray;
+		int initialSize;
 
 	public:
 

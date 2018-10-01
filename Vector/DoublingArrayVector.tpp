@@ -11,13 +11,13 @@ DoublingArrayVector<T>::DoublingArrayVector(int s){
 	items = new T[s];
 	capacity = s;
 	currentSize = 0;
-	std::cout<< "DoublingDoublingArrayVector created" << std::endl;
+	std::cout<< "DoublingArrayVector created" << std::endl;
 }
 
 template<class T>
 T DoublingArrayVector<T>::at(int i){
 	if (i < 0 || i > currentSize){
-		throw VectorException("Vector Exception! Out of bounds");
+		throw VectorException("doub Vector Exception! Out of bounds");
 	}
 	return items[i];
 }
@@ -32,7 +32,8 @@ void DoublingArrayVector<T>::set(int i, T o){
 template<class T>
 void DoublingArrayVector<T>::insert(int i, T o){
 	if (currentSize >= capacity){
-		throw VectorException("Vector Exception! Vector is full");
+		//throw VectorException("Vector Exception! Vector is full");
+		resize();
 	}
 	for(int j = currentSize - 1; j >= i; j--){
 		items[j+1] = items[j];

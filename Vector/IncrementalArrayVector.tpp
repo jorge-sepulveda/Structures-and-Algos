@@ -10,6 +10,7 @@ template<class T>
 IncrementalArrayVector<T>::IncrementalArrayVector(int s){
 	items = new T[s];
 	capacity = s;
+	initialSize = s;
 	currentSize = 0;
 	std::cout<< "IncrementalArrayVector created" << std::endl;
 }
@@ -17,7 +18,7 @@ IncrementalArrayVector<T>::IncrementalArrayVector(int s){
 template<class T>
 T IncrementalArrayVector<T>::at(int i){
 	if (i < 0 || i > currentSize){
-		throw VectorException("Vector Exception! Out of bounds");
+		throw VectorException("inc Vector Exception! Out of bounds");
 	}
 	return items[i];
 }
@@ -32,7 +33,8 @@ void IncrementalArrayVector<T>::set(int i, T o){
 template<class T>
 void IncrementalArrayVector<T>::insert(int i, T o){
 	if (currentSize >= capacity){
-		throw VectorException("Vector Exception! Vector is full");
+		//	throw VectorException("Vector Exception! Vector is full");
+		resize(initialSize);
 	}
 	for(int j = currentSize - 1; j >= i; j--){
 		items[j+1] = items[j];

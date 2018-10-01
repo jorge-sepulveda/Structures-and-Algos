@@ -12,7 +12,7 @@ ArrayVector<T>::ArrayVector(int s){
 template<class T>
 T ArrayVector<T>::at(int i){
 	if (i < 0 || i > currentSize){
-		throw VectorException("Vector Exception! Out of bounds");
+		throw VectorException("Array Vector Exception! Out of bounds");
 	}
 	return items[i];
 }
@@ -27,7 +27,7 @@ void ArrayVector<T>::set(int i, T o){
 template<class T>
 void ArrayVector<T>::insert(int i, T o){
 	if (currentSize >= capacity){
-		throw VectorException("Vector Exception! Vector is full");
+		throw VectorException("Array Vector Exception! Vector is full");
 	}
 	for(int j = currentSize - 1; j >= i; j--){
 		items[j+1] = items[j];
