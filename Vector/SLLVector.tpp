@@ -76,6 +76,61 @@ void SLLVector<T>::insert(int i, T o){
 }
 
 template <class T>
+void SLLVector<T>::set(int i, T o){
+    if (i>count){
+        throw VectorException("SLLVectorException: Out of Bounds");
+    }
+    else{
+        int counter = 0;
+        Node* current = head;
+        Node* nextOne;
+        T temp;
+        while (current != NULL){
+            
+            if (counter == i){
+                temp = current->data;
+                current->data=o;
+                cout << "replaced " << temp << " for " << o <<  endl;
+                break;
+            }
+            counter++;
+            nextOne = current->next;
+            current = nextOne;
+        }
+    }
+}
+
+template <class T>
+void SLLVector<T>::erase(int i){
+    if (i>count){
+        throw VectorException("SLLVectorException: Out of Bounds");
+    }
+    else{
+        int counter = 0;
+        Node* current = head;
+        Node* nextOne;
+        Node* target;
+        T temp;
+        while (current != NULL){
+            
+            if (counter == i-1){
+                target = current->next;
+                temp = target->data;
+                current->next = current->next->next;
+                free(target);
+                cout << "removed: " << temp << endl;
+                count--;
+                break;
+            }
+            
+            counter++;
+            nextOne = current->next;
+            current = nextOne;
+        }
+    }
+}
+
+template <class T>
 int SLLVector<T>::size(){
     if (empty()){
         throw VectorException ("SLLVectorException: Empty Stack");
@@ -108,7 +163,7 @@ void SLLVector<T>::printElements(){
 }
 
 
-
+//
 
 //destructor
 template <class T>
@@ -123,5 +178,5 @@ SLLVector<T>::~SLLVector(){
        
     }
     head = NULL;
-    cout << "Linked List Vector Destroyed" << endl;
+    cout << "SLLVector Destroyed" << endl;
 }

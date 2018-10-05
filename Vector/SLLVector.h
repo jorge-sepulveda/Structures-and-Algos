@@ -25,11 +25,11 @@ class SLLVector : public AbstractVector<T>{
         
         T at(int i);
        
-        void set(int i, T o) {}
+        void set(int i, T o);
         
         void insert(int i, T o);
             
-        void erase(int i) {}
+        void erase(int i);
             
         int size();
             

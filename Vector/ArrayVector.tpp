@@ -16,13 +16,13 @@ T ArrayVector<T>::at(int i){
 	}
 	return items[i];
 }
-
+//
 template<class T>
 void ArrayVector<T>::set(int i, T o){
 	items[i] = o;
 	currentSize++;
 }
-
+//
 //insert
 template<class T>
 void ArrayVector<T>::insert(int i, T o){

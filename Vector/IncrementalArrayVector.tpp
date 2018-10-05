@@ -22,7 +22,7 @@ T IncrementalArrayVector<T>::at(int i){
 	}
 	return items[i];
 }
-
+//
 template<class T>
 void IncrementalArrayVector<T>::set(int i, T o){
 	items[i] = o;
