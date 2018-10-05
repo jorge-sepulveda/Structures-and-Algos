@@ -15,31 +15,38 @@ int main(){
 		IncrementalArrayVector<int> testVector3(10);
 		SLLVector<int> testVector4;
 
-		for(int i=0;i<1000;i++){
+		for(int i=0;i<15;i++){
 			//testVector.insert(i,i);
-			testVector2.insert(i,i);
-			testVector3.insert(i,i);
-			//testVector4.enqueue(i);
+			//testVector2.insert(i,i);
+			//testVector3.insert(i,i);
+			testVector4.insert(i,i);
 		}
 
 		//cout << "index: " <<testVector.at(3) << endl;
-		cout << testVector.size() << endl;
-		cout << testVector.empty() << endl;
+		/*cout << testVector.size() << endl;
+		cout << testVector.empty() << endl;*/
 
 		//cout << "Array Vector list" << endl;
 		//testVector.printElements();
 		cout << "Doubling Vector list" << endl;
-		testVector2.printElements();
+		//testVector2.printElements();
 		cout << "inc Vector list" << endl;
-		testVector3.printElements();
-		//testVector.insert(9,45);
-		//testVector.erase(5);
+		cout << testVector3.size() << endl;
+		//cout <<	testVector4.size() << endl;
+		testVector4.insert(5,45);
+		
+		for (int i = 0; i<testVector4.size();i++){
+			cout << testVector4.at(i) << endl;
+		}
+		//k\
+		//cout << testVector4.printElements() << endl
+		//testVector4.insert(0,45);
+		
 		//cout << "printing elements again" << endl;
 		//testVector.printElements();
 		//cout << testVector3.at(50) << endl;
 		//testVector2.resize();
 		//testVector3.resize(50);
-		//dfdsf
 		
 	}
 	catch (VectorException& se) {

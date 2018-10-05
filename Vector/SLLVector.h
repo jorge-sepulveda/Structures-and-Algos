@@ -10,29 +10,32 @@ template <class T>
 class SLLVector : public AbstractVector<T>{
     private:
         struct Node{
-            T item;
+            T data;
             Node *next;
         };
-        Node* front;
-        Node* rear;
+        Node* head;
+        Node* tail;
         int count;
+        int pos;
     public:
     
         SLLVector(void);
        
         ~SLLVector();
         
-        T at(int i) {}
+        T at(int i);
        
         void set(int i, T o) {}
         
-        void insert(int i, T o) {}
+        void insert(int i, T o);
             
         void erase(int i) {}
             
-        int size() {}
+        int size();
             
-        bool empty() {}
+        bool empty();
+        
+        void printElements();
         
         
         

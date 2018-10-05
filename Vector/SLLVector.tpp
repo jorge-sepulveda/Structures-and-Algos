@@ -1,60 +1,88 @@
 #include "SLLVector.h"
 
+#include <iostream>
+
+using namespace std;
+
 
 //Default Constructor
 template <class T>
 SLLVector<T>::SLLVector(void){
-    front = NULL;
-    rear = NULL;
+    head = NULL;
+    tail = NULL;
     count = 0;
     //capacity = 0;
     std::cout << "made the linked list queue!" << std::endl;
 }
 
-/*//Enqueue function
+//at function
 template <class T>
-void SLLVector<T>::enqueue(const T& e){
-    Node * elem = new Node;
-    elem->item = e;
-    elem->next = NULL;
-    count+=1;
-    if (front==NULL){
-        front = elem;
-    }
-    else{
-        rear->next=elem;
-    }
-    rear = elem;
-    //std::cout << "added the item into the LL" << std::endl;
+T SLLVector<T>::at(int i){
+        Node* current = head;
+        Node* next;
+        T item;
+        int counter = 0;
+        
+        while (current != NULL){
+            if(counter == i){
+                item = current->data;
+                break;
+            }
+            else{
+                next = current->next; 
+                current = next; 
+                counter++;
+            }
+            
+        }
+        return item;
 }
 
-//dequeue function
 template <class T>
-T SLLVector<T>::dequeue(){
+void SLLVector<T>::insert(int i, T o){
+    Node* elem = new Node;
+    int counter = 0;
     
-    if( empty() ){
-        throw VectorException ("VectorException: Empty Stack");
+    elem->data = o;
+    
+    if (i>count){
+        throw VectorException("SLLVectorException: Out of Bounds");
     }
-    
+    else if(head == NULL && i == 0){
+        head = elem;
+        elem->next = NULL;
+        tail = elem;
+        count++;
+        cout << "inserted: " << o << endl;
+    }
     else{
-        Node* tempPointer = front;
-        T tempItem = tempPointer->item;
-        //std::cout << "removed " << tempPointer->item << " from the queue" << std::endl;
-        front = front->next;
-        free(tempPointer);
-        count-=1;
-        return tempItem;
+        Node* current = head;
+        Node* nextOne;
+        while (current != NULL){
+            
+            if (counter == i-1){
+                elem->next = current->next;
+                current->next = elem;
+                count++;
+                cout << "inserted: " << o << endl;
+                break;
+            }
+            
+            counter++;
+            nextOne = current->next;
+            current = nextOne;
+        }
     }
 }
-    
 
-//returns the item in front of the queue
 template <class T>
-T SLLVector<T>::frontelem(){
-    return front->item;
+int SLLVector<T>::size(){
+    if (empty()){
+        throw VectorException ("SLLVectorException: Empty Stack");
+    }
+    return count;
 }
-    
-//Checking to see if Queue is empty
+
 template <class T>
 bool SLLVector<T>::empty(){
     if (count == 0) {
@@ -67,19 +95,25 @@ bool SLLVector<T>::empty(){
 }
 
 template <class T>
-int SLLVector<T>::size(){
-    if (empty()){
-        throw VectorException ("VectorException: Empty Stack");
+void SLLVector<T>::printElements(){
+    Node* current = head;
+    Node* nextOne;
+    T o;
+    while(current!=NULL){
+        o = current->data;
+        cout << o << endl;
+        nextOne=current->next;
+        current = nextOne;
     }
-    return count;
 }
-*/
+
+
 
 
 //destructor
 template <class T>
 SLLVector<T>::~SLLVector(){
-    Node* current = front;
+    Node* current = head;
     Node* next;
     
     while (current != NULL){
@@ -88,6 +122,6 @@ SLLVector<T>::~SLLVector(){
        current = next; 
        
     }
-    front = NULL;
-    std::cout << "Linked List Vector Destroyed" << std::endl;
+    head = NULL;
+    cout << "Linked List Vector Destroyed" << endl;
 }
