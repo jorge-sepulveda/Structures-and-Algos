@@ -53,7 +53,7 @@ void SLLVector<T>::insert(int i, T o){
         elem->next = NULL;
         tail = elem;
         count++;
-        cout << "inserted: " << o << endl;
+        //cout << "inserted: " << o << endl;
     }
     else{
         Node* current = head;
@@ -64,7 +64,7 @@ void SLLVector<T>::insert(int i, T o){
                 elem->next = current->next;
                 current->next = elem;
                 count++;
-                cout << "inserted: " << o << endl;
+                //cout << "inserted: " << o << endl;
                 break;
             }
             
@@ -90,7 +90,7 @@ void SLLVector<T>::set(int i, T o){
             if (counter == i){
                 temp = current->data;
                 current->data=o;
-                cout << "replaced " << temp << " for " << o <<  endl;
+                //cout << "replaced " << temp << " for " << o <<  endl;
                 break;
             }
             counter++;
@@ -118,7 +118,7 @@ void SLLVector<T>::erase(int i){
                 temp = target->data;
                 current->next = current->next->next;
                 free(target);
-                cout << "removed: " << temp << endl;
+                //cout << "removed: " << temp << endl;
                 count--;
                 break;
             }

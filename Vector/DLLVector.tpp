@@ -38,39 +38,74 @@ T DLLVector<T>::at(int i){
         return item;
 }
 
+/*
+ * This insert function has been heavily modified so it can handle an a null head and tail. 
+ * 
+*/
 template <class T>
 void DLLVector<T>::insert(int i, T o){
     Node* elem = new Node;
-    int counter = 0;
-    
+    int counter = 0;    
     elem->data = o;
-    
+
     if (i>count){
         throw VectorException("DLLVectorException: Out of Bounds");
     }
-    else if(head == NULL && i == 0){
+    //check if the DLL is empty
+    else if(head == NULL && count==0){
         head = elem;
-        elem->next = NULL;
+        count++;
+        //cout << "inserted: " << o << endl;
+        return;
+    }
+    //adding to the front of the DLL
+    else if(i==0 && head != NULL){
+        //cout << "adding to the front" << endl;
+        elem->next = head;
+        head->prev = elem; 
+        head = elem;
+        //cout << "inserted: " << o << endl;
+        return;
+    }
+    //check if there is only one element
+    else if(count==1){
+        //cout << "in the first checker" << endl;
+        head->next=elem;
+        elem->prev=head;
+        tail=elem;
+        count++;
+        //cout << "inserted: " << o << endl;
+        return;
+    }
+    //adding to the tail
+    else if(i == count){
+        //cout << "added to the tail" << endl;
+        tail->next=elem;
+        elem->prev=tail;
         tail = elem;
         count++;
-        cout << "inserted: " << o << endl;
+        //cout << "inserted: " << o << endl;
+        return;
     }
+    //element
     else{
+        //cout << "got in the else" << endl;
         Node* current = head;
-        Node* nextOne;
         while (current != NULL){
             
-            if (counter == i-1){
-                elem->next = current->next;
-                current->next = elem;
+            if (counter == i){
+                //cout << "made it to equal!" << endl;
+                elem->next=current;
+                elem->prev=current->prev;
+                current->prev->next=elem;
+                current->prev=elem;
+
                 count++;
-                cout << "inserted: " << o << endl;
-                break;
+                //cout << "inserted: " << o << endl;
+                return;
             }
-            
             counter++;
-            nextOne = current->next;
-            current = nextOne;
+            current=current->next;
         }
     }
 }
@@ -83,19 +118,17 @@ void DLLVector<T>::set(int i, T o){
     else{
         int counter = 0;
         Node* current = head;
-        Node* nextOne;
         T temp;
         while (current != NULL){
             
             if (counter == i){
                 temp = current->data;
                 current->data=o;
-                cout << "replaced " << temp << " for " << o <<  endl;
+                //cout << "replaced " << temp << " for " << o <<  endl;
                 break;
             }
             counter++;
-            nextOne = current->next;
-            current = nextOne;
+            current = current->next;
         }
     }
 }
@@ -112,17 +145,15 @@ void DLLVector<T>::erase(int i){
         Node* target;
         T temp;
         while (current != NULL){
-            
             if (counter == i-1){
                 target = current->next;
                 temp = target->data;
                 current->next = current->next->next;
                 free(target);
-                cout << "removed: " << temp << endl;
+                //cout << "removed: " << temp << endl;
                 count--;
                 break;
             }
-            
             counter++;
             nextOne = current->next;
             current = nextOne;
@@ -152,18 +183,13 @@ bool DLLVector<T>::empty(){
 template <class T>
 void DLLVector<T>::printElements(){
     Node* current = head;
-    Node* nextOne;
     T o;
     while(current!=NULL){
         o = current->data;
         cout << o << endl;
-        nextOne=current->next;
-        current = nextOne;
+        current = current->next;
     }
 }
-
-
-//
 
 //destructor
 template <class T>
