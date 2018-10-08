@@ -1,7 +1,7 @@
-Name: Jorge Sepulveda
-Instructor: Eduardo Nakamura
-Class: CSCE 221
-Date: October 8 2018
+Name: Jorge Sepulveda  
+Instructor: Eduardo Nakamura  
+Class: CSCE 221  
+Date: October 8 2018  
 
 # Vector Asignment
 
@@ -48,11 +48,11 @@ You can also run a g++ command. There is no need to add any other files to the l
 ```
 # *Sources Used*
 
-[Geeks for geeks].
-[Github].
-[Stack overflow].
-Book.
-Lecture Materials.
+[Geeks for geeks].  
+[Github].  
+[Stack overflow].  
+Book.  
+Lecture Materials.  
 
 ----
 
