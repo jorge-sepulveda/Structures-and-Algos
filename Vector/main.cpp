@@ -8,16 +8,22 @@
 
 using namespace std;
 
+/*
+ * Author: Jorge Sepulveda
+ * Class: CSCE 221
+ * Instructor: Eduardo Nakamura
+ * Assignment: Vector implementaion*/
+ //s
 
 int main(){
 	try{
 		ArrayVector<double> testVector(50);
-		IncrementalArrayVector<int> testVector2(10);
-		DoublingArrayVector<int> testVector3(10);
+		IncrementalArrayVector<int> testVector2(1);
+		DoublingArrayVector<int> testVector3(1);
 		SLLVector<int> testVector4;
 		DLLVector<int> testVector5;
-
-		cout << "Fixed array\n" << endl;
+		
+		cout << "\nFixed array" << endl;
 
 		for(int i=0;i<10;i++)
 		testVector.insert(i,i);
@@ -33,7 +39,7 @@ int main(){
 		cout<<"Output must be "<<25<<". Output: "<<testVector.at(5)<<endl;
 		cout<<"Output must be "<<5<<". Output: "<<testVector.at(4)<<endl;
 
-		cout << "incremental arra\n" << endl;
+		cout << "\nincremental array" << endl;
 
 		for(int i=0;i<10;i++)
 		testVector2.insert(i,i);
@@ -49,7 +55,7 @@ int main(){
 		cout<<"Output must be "<<25<<". Output: "<<testVector2.at(5)<<endl;
 		cout<<"Output must be "<<5<<". Output: "<<testVector2.at(4)<<endl;
 
-		cout << "doubling array\n" << endl;
+		cout << "\ndoubling array" << endl;
 
 		for(int i=0;i<10;i++)
 		testVector3.insert(i,i);
@@ -64,14 +70,14 @@ int main(){
 		cout<<"Output must be "<<6<<". Output: "<<testVector3.at(6)<<endl;
 		cout<<"Output must be "<<25<<". Output: "<<testVector3.at(5)<<endl;
 		cout<<"Output must be "<<5<<". Output: "<<testVector3.at(4)<<endl;
-
-		cout << "Singly linked list\n" << endl;
+		
+		cout << "\nSingly linked list" << endl;
 
 		for(int i=0;i<10;i++)
 		testVector4.insert(i,i);
 		for(int i=0;i<10;i++)
 			cout<<"Output must be "<<i<<". Output: "<<testVector4.at(i)<<endl;
-		testVector4.erase(0);
+		testVector4.erase(9);
 		for(int i=0;i<9;i++)
 			cout<<"Output must be "<<i+1<<". Output: "<<testVector4.at(i)<<endl;
 		testVector4.set(2,3);
@@ -81,9 +87,9 @@ int main(){
 		cout<<"Output must be "<<25<<". Output: "<<testVector4.at(5)<<endl;
 		cout<<"Output must be "<<5<<". Output: "<<testVector4.at(4)<<endl;
 
-
-
-		cout << "doubly linked list\n" << endl;
+		
+		
+		cout << "\ndoubly linked list" << endl;
 
 		for(int i=0;i<10;i++)
 		testVector5.insert(i,i);
@@ -98,8 +104,6 @@ int main(){
 		cout<<"Output must be "<<6<<". Output: "<<testVector5.at(6)<<endl;
 		cout<<"Output must be "<<25<<". Output: "<<testVector5.at(5)<<endl;
 		cout<<"Output must be "<<5<<". Output: "<<testVector5.at(4)<<endl;
-
-		
 		
 	}
 	catch (VectorException& se) {

@@ -18,24 +18,29 @@ DLLVector<T>::DLLVector(void){
 //at function
 template <class T>
 T DLLVector<T>::at(int i){
-        Node* current = head;
-        Node* next;
-        T item;
-        int counter = 0;
-        
-        while (current != NULL){
-            if(counter == i){
-                item = current->data;
-                break;
-            }
-            else{
-                next = current->next; 
-                current = next; 
-                counter++;
-            }
-            
+    
+    if(i < 0 || i>=count){
+            throw VectorException("DLLVectorException: Out of Bounds");
         }
-        return item;
+    
+    Node* current = head;
+    Node* next;
+    T item;
+    int counter = 0;
+    
+    while (current != NULL){
+        if(counter == i){
+            item = current->data;
+            break;
+        }
+        else{
+            next = current->next; 
+            current = next; 
+            counter++;
+        }
+            
+    }
+    return item;
 }
 
 /*
@@ -144,21 +149,50 @@ void DLLVector<T>::erase(int i){
         Node* nextOne;
         Node* target;
         T temp;
-        while (current != NULL){
-            if (counter == i-1){
-                target = current->next;
-                temp = target->data;
-                current->next = current->next->next;
-                free(target);
-                //cout << "removed: " << temp << endl;
-                count--;
-                break;
-            }
-            counter++;
-            nextOne = current->next;
-            current = nextOne;
+        
+        if (i == 0){
+            target = head; 
+            temp=target->data;
+            head=head->next;
+            free(target);
+            cout << "removed the head: " << temp << endl;
+            count--;
+            return;
         }
-    }
+        else if(i == count-1){
+            target = tail;
+            temp = target->data;
+            tail->prev->next = NULL;
+            tail=tail->prev;
+            free(target);
+            count--;
+            cout << "removed the tail: " << temp << endl;
+            return;
+        }
+        
+        else{
+            
+            while (current != NULL){
+                
+                
+                if (counter == i-1){
+                    target = current;
+                    temp = target->data;
+                    current->prev->next = current->next;
+                    current->next->prev=current->prev;
+                    //current->next = current->next->next;
+                    free(target);
+                    cout << "removed: " << temp << endl;
+                    count--;
+                    return;
+                }
+            
+            counter++;
+            current = current->next;
+            }
+        
+        }
+    }//end top else
 }
 
 template <class T>

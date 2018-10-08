@@ -23,6 +23,10 @@ T SLLVector<T>::at(int i){
         T item;
         int counter = 0;
         
+        if(i < 0 || i>=count){
+            throw VectorException("DLLVectorException: Out of Bounds");
+        }
+        
         while (current != NULL){
             if(counter == i){
                 item = current->data;
@@ -41,36 +45,66 @@ T SLLVector<T>::at(int i){
 template <class T>
 void SLLVector<T>::insert(int i, T o){
     Node* elem = new Node;
-    int counter = 0;
-    
+    int counter = 0;    
     elem->data = o;
-    
+
     if (i>count){
-        throw VectorException("SLLVectorException: Out of Bounds");
+        throw VectorException("DLLVectorException: Out of Bounds");
     }
-    else if(head == NULL && i == 0){
+    //check if the DLL is empty
+    else if(head == NULL && count==0){
         head = elem;
-        elem->next = NULL;
+        count++;
+        //cout << "inserted: " << o << endl;
+        return;
+    }
+    //adding to the front of the DLL
+    else if(i==0 && head != NULL){
+        //cout << "adding to the front" << endl;
+        elem->next = head;
+        head = elem;
+        //cout << "inserted: " << o << endl;
+        return;
+    }
+    //check if there is only one element
+    else if(count==1){
+        //cout << "in the first checker" << endl;
+        head->next=elem;
+        tail=elem;
+        count++;
+        //cout << "inserted: " << o << endl;
+        return;
+    }
+    //adding to the tail
+    else if(i == count){
+        //cout << "added to the tail" << endl;
+        tail->next=elem;
         tail = elem;
         count++;
         //cout << "inserted: " << o << endl;
+        return;
     }
+    //element
     else{
+        //cout << "got in the else" << endl;
         Node* current = head;
-        Node* nextOne;
+        
         while (current != NULL){
             
             if (counter == i-1){
-                elem->next = current->next;
-                current->next = elem;
+                //cout << "made it to equal!" << endl;
+                elem->next=current->next;
+                current->next=elem;
+                //elem->prev=current->prev;
+                //current->prev->next=elem;
+                //current->prev=elem;
+
                 count++;
                 //cout << "inserted: " << o << endl;
-                break;
+                return;
             }
-            
             counter++;
-            nextOne = current->next;
-            current = nextOne;
+            current=current->next;
         }
     }
 }
@@ -108,25 +142,57 @@ void SLLVector<T>::erase(int i){
     else{
         int counter = 0;
         Node* current = head;
+        Node* previousNode;
         Node* nextOne;
         Node* target;
         T temp;
-        while (current != NULL){
-            
-            if (counter == i-1){
-                target = current->next;
-                temp = target->data;
-                current->next = current->next->next;
-                free(target);
-                //cout << "removed: " << temp << endl;
-                count--;
-                break;
-            }
-            
-            counter++;
-            nextOne = current->next;
-            current = nextOne;
+        
+        if (i == 0){
+            target = head;
+            temp = target->data;
+            head=head->next;
+            free(target);
+            cout << "removed the head: " << temp << endl;
+            count--;
+            return;
         }
+        else{
+            while (current != NULL){
+                //cout<<"in the loop"<<endl;
+                if (counter == i-1){
+                    if(current->next==tail){
+                        
+                        tail=current;
+                        target = current->next;
+                        temp = target->data;
+                        current->next = NULL;
+                        free(target);
+                        cout << "removed the tail: " << temp << endl;
+                        count--;
+                        cout << count <<endl;
+                        return;
+                    }
+                    else{
+                        target = current->next;
+                        if(target==NULL){
+                            throw VectorException("SLLVectorException: Out of bounds");
+                        }
+                        temp = target->data;
+                        current->next = current->next->next;
+                        free(target);
+                        cout << "removed: " << temp << endl;
+                        count--;
+                        cout << count <<endl;
+                        return;
+                    }
+                
+                }
+            counter++;
+            current=current->next;
+            }   
+            
+        }
+        
     }
 }
 
@@ -152,13 +218,11 @@ bool SLLVector<T>::empty(){
 template <class T>
 void SLLVector<T>::printElements(){
     Node* current = head;
-    Node* nextOne;
     T o;
     while(current!=NULL){
         o = current->data;
         cout << o << endl;
-        nextOne=current->next;
-        current = nextOne;
+        current=current->next;
     }
 }
 
