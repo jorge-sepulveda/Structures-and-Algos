@@ -95,9 +95,7 @@ void SLLVector<T>::insert(int i, T o){
                 //cout << "made it to equal!" << endl;
                 elem->next=current->next;
                 current->next=elem;
-                //elem->prev=current->prev;
-                //current->prev->next=elem;
-                //current->prev=elem;
+
 
                 count++;
                 //cout << "inserted: " << o << endl;
@@ -142,7 +140,6 @@ void SLLVector<T>::erase(int i){
     else{
         int counter = 0;
         Node* current = head;
-        Node* previousNode;
         Node* nextOne;
         Node* target;
         T temp;
@@ -156,6 +153,7 @@ void SLLVector<T>::erase(int i){
             count--;
             return;
         }
+        //made this else really long to avoid getting garbage and seg faults
         else{
             while (current != NULL){
                 //cout<<"in the loop"<<endl;

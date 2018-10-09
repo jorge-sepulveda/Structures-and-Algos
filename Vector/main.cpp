@@ -12,8 +12,11 @@ using namespace std;
  * Author: Jorge Sepulveda
  * Class: CSCE 221
  * Instructor: Eduardo Nakamura
- * Assignment: Vector implementaion*/
- //s
+ * Assignment: Vector implementation
+ * Date: October 8 2018
+ * 
+ * This main file runs the vector functions that Harish posted on Piazza and applying the same functions to each Vector implementation.
+ */
 
 int main(){
 	try{
@@ -77,7 +80,7 @@ int main(){
 		testVector4.insert(i,i);
 		for(int i=0;i<10;i++)
 			cout<<"Output must be "<<i<<". Output: "<<testVector4.at(i)<<endl;
-		testVector4.erase(9);
+		testVector4.erase(0);
 		for(int i=0;i<9;i++)
 			cout<<"Output must be "<<i+1<<". Output: "<<testVector4.at(i)<<endl;
 		testVector4.set(2,3);
