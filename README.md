@@ -6,11 +6,11 @@ Date: October 8 2018
 # Vector Asignment
 
 In this folder you will find the different implementations used to create a vector. This includes:
-  - A fixed array
-  - An Incremental Array
-  - A doubling Array
-  - A singly linked list
-  - A doubly linked list
+  - A fixed array  
+  - An Incremental Array  
+  - A doubling Array  
+  - A singly linked list  
+  - A doubly linked list  
 ## File Structure
 
 This folder will have different header files and .tpp files that are used to implement each header function. 
@@ -43,8 +43,8 @@ $ ./main
 You can also run a g++ command. There is no need to add any other files to the linker. There is only one .cpp file
 
 ```sh
- $ g++ -std=c++11 main.cpp -o main
- $ ./main
+ $ g++ -std=c++11 main.cpp -o main  
+ $ ./main  
 ```
 # *Sources Used*
 
