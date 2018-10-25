@@ -13,7 +13,7 @@ int main(){
     srand((unsigned)time(0));
     int random_integer;
 
-    cout << "hi" << endl;//sdsddsd
+    cout << "hi" << endl;//sdsddsdsdf
     Tree<int> t1;
     t1.insert(50);
     for (int i = 0; i < 100; ++i)

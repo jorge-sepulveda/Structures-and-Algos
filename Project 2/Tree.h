@@ -20,7 +20,10 @@ class Tree{
     	void insertPrivate(T item, node* n);
 
     	void inOrderPrivate(node* n);
-
+    	
+		//CreateLeaf is here because I didn't figured out how to implement this
+		//outside the class. it has something to do with the struct type getting
+		//called from outside the Tree class. 
     	node* CreateLeaf(T item){
     		node* n = new node;
 			n->data = item;
@@ -43,20 +46,24 @@ class Tree{
     	
 };
 
+
+//Tree constructor makes and empty tree. 
 template <class T>
 Tree<T>::Tree(void){
 	root=NULL;
 	count = 0;
 	capacity = 0;
-	cout << "made the empty tree" << endl;
+	//cout << "made the empty tree" << endl;
 }
 
+//public insert calls the private version using the root as a parameter
 template <class T>
 void Tree<T>::insert(T item){
 
 	insertPrivate(item, root);
 
 }
+
 
 template <class T>
 void Tree<T>::insertPrivate(T item, node* n){
@@ -98,7 +105,7 @@ void Tree<T>::insertPrivate(T item, node* n){
 }
 
 
-
+//public inOrderfunction calls the private inOrder function by passing the root.
 template <class T>
 void Tree<T>::inOrder(){
 	inOrderPrivate(root);
@@ -124,6 +131,10 @@ void Tree<T>::inOrderPrivate(node* n){
 	}
 }
 
+/*
+ *destroyer is a helper function for the destructor. It takes in the root as a parameter
+ *and it recursively deletes the tree nodes and leaves. it doesn't do anything if the tree is empty.
+ */
 template <class T>
 void Tree<T>::destroyer(node *tree){
 	T thing;
@@ -135,7 +146,7 @@ void Tree<T>::destroyer(node *tree){
 		delete tree;
 	}
 }
-
+//the destructor calls destroyer which deletes the tree. 
 template <class T>
 Tree<T>::~Tree(){
 	destroyer(root);
