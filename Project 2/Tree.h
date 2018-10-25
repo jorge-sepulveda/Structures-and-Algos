@@ -2,6 +2,7 @@
 #define _TREE_H
 
 #include <iostream>
+#include <queue>
 using namespace std;
 
 template <class T>
@@ -20,6 +21,8 @@ class Tree{
     	void insertPrivate(T item, node* n);
 
     	void inOrderPrivate(node* n);
+    	
+    	void levelOrderPrivate(node* n);
     	
 		//CreateLeaf is here because I didn't figured out how to implement this
 		//outside the class. it has something to do with the struct type getting
@@ -42,6 +45,8 @@ class Tree{
     	void destroyer(node* tree);
 
     	void inOrder();
+    	
+    	void levelOrder();
 
     	
 };
@@ -64,13 +69,13 @@ void Tree<T>::insert(T item){
 
 }
 
-
+//insert private actually adds the element 
 template <class T>
-void Tree<T>::insertPrivate(T item, node* n){
+void Tree<T>::insertPrivate(T item, node* n){//start Tree constructor
 
 	if(root==NULL){
 		root = CreateLeaf(item);
-		cout << "added: " << item << " to the root" << endl;
+		//cout << "added: " << item << " to the root" << endl;
 	}
 	else if(item < n->data)
 	{
@@ -81,7 +86,7 @@ void Tree<T>::insertPrivate(T item, node* n){
 		else
 		{
 			n->left = CreateLeaf(item);
-			cout << "added: " << item << " to the left" << endl;
+			//cout << "added: " << item << " to the left" << endl;
 		}
 	}
 	else if(item > n->data)
@@ -93,7 +98,7 @@ void Tree<T>::insertPrivate(T item, node* n){
 		else
 		{
 			n->right = CreateLeaf(item);
-			cout << "added: " << item << " to the right" << endl;
+			//cout << "added: " << item << " to the right" << endl;
 		}
 	}
 	else
@@ -102,7 +107,7 @@ void Tree<T>::insertPrivate(T item, node* n){
 	}
 
 
-}
+}//end tree constructor
 
 
 //public inOrderfunction calls the private inOrder function by passing the root.
@@ -111,6 +116,9 @@ void Tree<T>::inOrder(){
 	inOrderPrivate(root);
 }
 
+//inOrderPrivate actually goes through the tree recursively to print the data.
+//Assuming the BST was properly implemented, this function should output the data in 
+//ascending order. 
 template <class T>
 void Tree<T>::inOrderPrivate(node* n){
 	if (root != NULL)
@@ -131,6 +139,47 @@ void Tree<T>::inOrderPrivate(node* n){
 	}
 }
 
+template <class T>
+void Tree<T>::levelOrder(){
+	levelOrderPrivate(root);
+}
+
+template <class T>
+void Tree<T>::levelOrderPrivate(node* n){
+	
+	
+	 // Base Case  
+    if (n == NULL) return;  
+  
+    // Create an empty queue for level order tarversal  
+    queue<node *> q;  
+  
+    // Enqueue Root and initialize height  
+    q.push(n);  
+  
+    while (q.empty() == false)  
+    {  
+        // nodeCount (queue size) indicates number 
+        // of nodes at current lelvel.  
+        int nodeCount = q.size();  
+  
+        // Dequeue all nodes of current level and  
+        // Enqueue all nodes of next level  
+        while (nodeCount > 0) 
+        {  
+            node *node = q.front();  
+            cout << node->data << " ";  
+            q.pop();  
+            if (node->left != NULL)  
+                q.push(node->left);  
+            if (node->right != NULL)  
+                q.push(node->right);  
+            nodeCount--;  
+        }  
+        cout << endl;  
+    }  
+}
+
 /*
  *destroyer is a helper function for the destructor. It takes in the root as a parameter
  *and it recursively deletes the tree nodes and leaves. it doesn't do anything if the tree is empty.
@@ -138,7 +187,8 @@ void Tree<T>::inOrderPrivate(node* n){
 template <class T>
 void Tree<T>::destroyer(node *tree){
 	T thing;
-	if(tree != NULL){
+	if(tree != NULL)
+	{
 		thing = tree->data;
 		destroyer(tree->left);
 		destroyer(tree->right);
