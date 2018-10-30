@@ -12,6 +12,7 @@ class Tree{
         T data;
         node *left;
         node *right;
+        int height;
         };
 
     	int count;
@@ -32,6 +33,7 @@ class Tree{
 			n->data = item;
 			n->left = NULL;
 			n->right = NULL;
+			n->height = 1;
 			return n;
     	}
     
@@ -47,6 +49,10 @@ class Tree{
     	void inOrder();
     	
     	void levelOrder();
+
+    	int maxDepth();
+
+    	int maxDepthPrivate(node* n);
 
     	
 };
@@ -103,7 +109,7 @@ void Tree<T>::insertPrivate(T item, node* n){//start Tree constructor
 	}
 	else
 	{
-		cout << "item " << item << " is already in the tree\n";
+		//cout << "item " << item << " is already in the tree\n";
 	}
 
 
@@ -178,6 +184,30 @@ void Tree<T>::levelOrderPrivate(node* n){
         }  
         cout << endl;  
     }  
+}
+
+template <class T>
+int Tree<T>::maxDepth(){
+	return maxDepthPrivate(root);
+}
+
+template <class T>
+int Tree<T>::maxDepthPrivate(node *n){
+
+	if (n==NULL){
+		return 0;
+	}
+	else 
+    { 
+       /* compute the depth of each subtree */
+       int lDepth = maxDepthPrivate(n->left); 
+       int rDepth = maxDepthPrivate(n->right); 
+  
+       /* use the larger one */
+       if (lDepth > rDepth)  
+           return(lDepth+1); 
+       else return(rDepth+1); 
+    } 
 }
 
 /*

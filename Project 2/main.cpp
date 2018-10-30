@@ -6,6 +6,13 @@
 #include <iostream>
 #include <fstream>
 
+/*
+ *Author: Jorge Sepulveda
+ *Date: 10/29/2018
+ *Class: CSCE 221
+ *Programming assignment 2
+ */
+
 using namespace std;
 
 int main(){
@@ -13,30 +20,21 @@ int main(){
     srand((unsigned)time(0));
     int random_integer;
 
-    cout << "hi" << endl;//sdsddsdsdf
+    cout << "making happy little trees" << endl;//sdsddsdsdf
     Tree<int> t1;
-    t1.insert(20);
-    t1.insert(8);
-    t1.insert(22);
-    t1.insert(4);
-    t1.insert(12);
-    t1.insert(21);
-    t1.insert(23);
-    t1.insert(2);
-    t1.insert(5);
-    t1.insert(9);
-    t1.insert(15);
-
-    /*for (int i = 0; i < 100; ++i)
+    Tree<double> t2;
+    for (int i = 0; i < 10000; ++i)
     {
-        //random_integer = (rand()%10000)+1;
-        t1.insert(i);
-    }*/
+        random_integer = rand() % 10;
+        t1.insert(random_integer);
+        //cout << random_integer << endl;
+    }
     //cout << "Tree in order: ";
     //t1.inOrder();
-     cout << "level order: \n";
-    t1.levelOrder();
+    cout << "level order: \n";
+    //t1.levelOrder();
     cout << "\n";
+    cout << t1.maxDepth() - 1 << endl;//s
 
     /*try{
         sd
