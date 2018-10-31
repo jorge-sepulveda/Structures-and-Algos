@@ -156,8 +156,7 @@ void Tree<T>::levelOrder(){
 template <class T>
 void Tree<T>::levelOrderPrivate(node* n){
 	
-	
-	 // Base Case  
+	//goes back if we have an empty tree 
     if (n == NULL) return;  
   
     // Create an empty queue for level order tarversal  
