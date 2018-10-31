@@ -12,7 +12,6 @@ class Tree{
         T data;
         node *left;
         node *right;
-        int height;
         };
 
     	int count;
@@ -33,7 +32,6 @@ class Tree{
 			n->data = item;
 			n->left = NULL;
 			n->right = NULL;
-			n->height = 1;
 			return n;
     	}
     
@@ -43,6 +41,8 @@ class Tree{
     	void insert(T item);
 
     	~Tree();
+
+    	int getCount();
 
     	void destroyer(node* tree);
 
@@ -82,8 +82,9 @@ void Tree<T>::insertPrivate(T item, node* n){//start Tree constructor
 	if(root==NULL){
 		root = CreateLeaf(item);
 		//cout << "added: " << item << " to the root" << endl;
+		count++;
 	}
-	else if(item < n->data)
+	else if(item <= n->data)
 	{
 		if(n->left != NULL)
 		{
@@ -92,6 +93,7 @@ void Tree<T>::insertPrivate(T item, node* n){//start Tree constructor
 		else
 		{
 			n->left = CreateLeaf(item);
+			count++;
 			//cout << "added: " << item << " to the left" << endl;
 		}
 	}
@@ -104,6 +106,7 @@ void Tree<T>::insertPrivate(T item, node* n){//start Tree constructor
 		else
 		{
 			n->right = CreateLeaf(item);
+			count++;
 			//cout << "added: " << item << " to the right" << endl;
 		}
 	}
@@ -208,6 +211,11 @@ int Tree<T>::maxDepthPrivate(node *n){
            return(lDepth+1); 
        else return(rDepth+1); 
     } 
+}
+
+template <class T>
+int Tree<T>::getCount(){
+	return count;
 }
 
 /*
