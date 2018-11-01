@@ -21,7 +21,7 @@ int main(){
     int random_integer;
     double random_double;
 
-    cout << "making happy little trees" << endl;//sdsddsdsdf
+    cout << "making happy little trees" << endl;
     Tree<int> t1;
     Tree<double> t2;
 
@@ -29,22 +29,21 @@ int main(){
     logs.open("results.csv");
     logs << "Number of nodes, Int Tree height, Double Tree Height\n";
         
-    for (int i = 1; i <= 30000; ++i)
+    for (int i = 1; i <= 1000; ++i)
     {
         random_integer = rand() % 10;
         random_double = ((double) rand() / (RAND_MAX));
-        //cout << random_double << endl;
         t1.insert(random_integer);
         t2.insert(random_double);
-        //cout << random_integer << endl;
         //every i intervals, get the height and log it.
-        if (i%50==0){
+        if (i%10==0){
             logs << i << ", " << t1.maxDepth()-1 << ", " << t2.maxDepth()-1 << "\n";
-            //cout << "t1 height: " << t1.maxDepth() - 1 << endl;
-            //cout << "t2 height: " << t2.maxDepth() - 1 << endl;
         }  
     }
     logs.close();
+
+    //t1.levelOrder();
+    //t1.inOrder();
 
     
 
