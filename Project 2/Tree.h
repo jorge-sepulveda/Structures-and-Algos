@@ -156,7 +156,7 @@ void Tree<T>::levelOrder(){
 template <class T>
 void Tree<T>::levelOrderPrivate(node* n){
 	
-	//goes back if we have an empty tree 
+	//return if the tree is empty
     if (n == NULL) return;  
   
     // Create an empty queue for level order tarversal  
@@ -211,7 +211,7 @@ int Tree<T>::maxDepthPrivate(node *n){
        else return(rDepth+1); 
     } 
 }
-
+//returns number of nodes in the tree
 template <class T>
 int Tree<T>::getCount(){
 	return count;

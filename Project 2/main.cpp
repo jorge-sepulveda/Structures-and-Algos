@@ -21,10 +21,10 @@ int main(){
     int random_integer;
     double random_double;
 
-    cout << "making happy little trees" << endl;
+    cout << "making trees" << endl;
     Tree<int> t1;
     Tree<double> t2;
-
+    //making the csv file
     ofstream logs;
     logs.open("results.csv");
     logs << "Number of nodes, Int Tree height, Double Tree Height\n";
