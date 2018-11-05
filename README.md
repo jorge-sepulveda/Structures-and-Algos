@@ -1,39 +1,27 @@
-Name: Jorge Sepulveda  
-Instructor: Eduardo Nakamura  
-Class: CSCE 221  
-Date: October 8 2018  
+Author: Jorge Sepulveda  
 
-# Vector Asignment
+# Data Structures implemented in c++
 
-In this folder you will find the different implementations used to create a vector. This includes:
-  - A fixed array  
-  - An Incremental Array  
-  - A doubling Array  
-  - A singly linked list  
-  - A doubly linked list  
+These folders contain headers and .cpp files of several data structures and algorithms that I implemented for class.
+
+Others are welcome to look at my projects as a reference for implementing their own projects. Take my code with a grain of salt because it is definitely not perfect.
+
 ## File Structure
 
-This folder will have different header files and .tpp files that are used to implement each header function. 
-
-For testing, I have copied Harish's main file and copied it over to my main file to perform the same actions on every Vector implementation
-
-## Functions
+Each folder will contain a data structure/algorithm and the different implentations that I did for each one(linked lists, arrays, etc.)
 
 
-Below are the different functions each Vector implementation has:
 
-* at(int i) - returns the value at index i.
-* set(int i, T o) - sets the value of index i equal to the object T(also replaces values). 
-* insert(int i, T o) - inserts the T object into the array and adjusts the indeces after i.
-* erase(int i) - erases the value at index i and adjusts the array afterwards.
-* size() - returns the amount of elements in the Vector.
-* empty() - returns a boolean value if there are no elements .
-* Some of the implementations also have a printElements() function which prints all the values of the Vector in increasing 
-index order.
- 
+Below is the list of every project along with some info for it's implementations.
+
+* Queue - Incremental Array, Fixed Array, Doubling Array, Linked List, Doubly Linked List
+* Vector - Incremental Array, Fixed Array, Doubling Array, Linked List, Doubly Linked List
+* Stack - Linked List
+* Tree - Link List and it uses recursion
+
 ## **Running it**
 
-I have included a makefile in the folder so you can run these commands in the terminal to run it.
+I have included a makefile in each folder so you can run these commands in the shell to run it.
 
 ```sh
 $ make
@@ -43,18 +31,16 @@ $ ./main
 You can also run a g++ command. There is no need to add any other files to the linker. There is only one .cpp file
 
 ```sh
- $ g++ -std=c++11 main.cpp -o main  
+ $ g++ -std=c++11 <filename>.cpp -o main  
  $ ./main  
 ```
 # *Sources Used*
 
-[Geeks for geeks].  
-[Github].  
-[Stack overflow].  
-Book.  
-Lecture Materials.  
-
 ----
+
+License:
+
+MIT license
 
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
