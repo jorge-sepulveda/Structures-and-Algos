@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
 
-class QueueException {
+class PQException {
     public:
-        QueueException(std::string s) : str(s) {}
-        ~QueueException() {}
+        PQException(std::string s) : str(s) {}
+        ~PQException() {}
         void what() {
             std::cout << str << std::endl;
         }
