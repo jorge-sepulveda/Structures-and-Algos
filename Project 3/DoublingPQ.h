@@ -9,7 +9,7 @@
 
 
 template <class T>
-class DoublingPQ : public PriorityQueue<T>{   
+class DoublingPQ : public PriorityQueue<T>{
     private:
         T *tempArray;
         T *items;
@@ -17,31 +17,31 @@ class DoublingPQ : public PriorityQueue<T>{
         int back;
         int capacity;
         int count;
-        int min;
-    
+        T min;
+        bool firstTime;
+
     public:
-    
+
         DoublingPQ( void );
-           
+
         ~DoublingPQ( void );
-           
+
         bool empty(void);
-        
+
         int size(void);
-        
+
         void insert ( T e );
-        
+
         T removeMin(void);
-        
+
         T minValue(void);
-           
+
         void resize();
-           
+
         //void printElements();
 };
 
 
 #include "DoublingPQ.tpp"
-    
-#endif
 
+#endif

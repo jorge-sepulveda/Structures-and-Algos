@@ -10,7 +10,6 @@ DoublingPQ<T>::DoublingPQ(void){
     back = -1;
     capacity = 100;
     count = 0;
-    min = 100;
     cout << "made the doubling queue!" << endl;
 }
 
@@ -18,29 +17,40 @@ DoublingPQ<T>::DoublingPQ(void){
 //puts an item into the back of the queue and resizes if needed
 template <class T>
 void DoublingPQ<T>::insert(T e){
-    
+
     if (count == capacity){
         resize();
         back = (back + 1) % capacity;
         items[back] = e;
         count++;
         cout << "added the item!" << endl;
-    } 
+    }
     else{
+        if (firstTime){
+          min = e;
+          firstTime=false;
+        }
+        if (e < min){
+          min = e;
+        }
         back = (back + 1) % capacity;
         items[back] = e;
         count++;
         cout << "added the item!" << endl;
     }
-    
+
 }
 
+template <class T>
+T DoublingPQ<T>::minValue(void){
+    return min;
+}
 /*//dequeue function
 template <class T>
 T DoublingPQ<T>::dequeue(){
 
-    
-    
+
+
     if( empty() ){
         throw PQException ("PQException: Empty Stack");
     }
@@ -49,11 +59,11 @@ T DoublingPQ<T>::dequeue(){
 
     front = (front + 1) % capacity;
     count--;
-    
+
     return itemDequeued;
 }*/
 
-//returns a bool if it's empty or not. 
+//returns a bool if it's empty or not.
 template <class T>
 bool DoublingPQ<T>::empty(){
     if (count == 0) {
@@ -65,7 +75,7 @@ bool DoublingPQ<T>::empty(){
     }
 }
 
-//resize function creates a new array that is twice the size of the current array and replaces the current array after copying the old array to the new one. 
+//resize function creates a new array that is twice the size of the current array and replaces the current array after copying the old array to the new one.
 template <class T>
 void DoublingPQ<T>::resize(){
     if (count == capacity){
@@ -78,11 +88,11 @@ void DoublingPQ<T>::resize(){
         //std::cout << "new size is: " << capacity << std::endl;
         delete[] items;
         items=tempArray;
-        
+
     }
 }
 
-/*//prints all the elements in the queue. 
+/*//prints all the elements in the queue.
 template <class T>
 void DoublingPQ<T>::printElements(){
     for (int i=front; i<=back;i++){
@@ -103,6 +113,6 @@ template <class T>
 DoublingPQ<T>::~DoublingPQ(void) {
     delete[] items;
     cout << "doubling queue destructor called" << endl;
-    
-    
+
+
 }
