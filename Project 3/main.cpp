@@ -1,4 +1,5 @@
 #include "UnsortedPQ.h"
+#include "SortedPQ.h"
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -6,11 +7,23 @@
 #include <iostream>
 #include <fstream>
 
+//
 int main(){
 
     try{
-        cout << "hello world" << endl;
         UnsortedPQ<int> dpq;
+        SortedPQ<int> spq;
+
+        string line;
+        ifstream myfile ("numbers.txt");
+        if (myfile.is_open()){
+            while ( myfile.good() ){
+                getline (myfile,line);
+                cout << line << endl;
+            }
+            myfile.close();
+        }
+        else cout << "Unable to open file\n";
 
         dpq.insert(5);
         dpq.insert(6);
@@ -21,7 +34,17 @@ int main(){
         cout << dpq.removeMin() << endl;
         cout << dpq.removeMin() << endl;
         cout << dpq.removeMin() << endl;
-        //cout << dpq.size() << endl;/
+        dpq.insert(8);
+        dpq.insert(67);
+        dpq.insert(23);
+        dpq.insert(2);
+        dpq.insert(14);
+        dpq.printElements();
+
+
+        //cout << dpq.removeMin() << endl;
+        //
+        //cout << dpq.size() << endl;
         //cout << "the min is " << dpq.minValue() << endl;//check
 
         //dpq.printElements();

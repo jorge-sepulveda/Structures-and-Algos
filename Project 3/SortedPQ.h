@@ -1,15 +1,14 @@
-#ifndef _UNSORTED_PQ_H
-#define _UNSORTED_PQ_H
+#ifndef _SORTED_PQ_H
+#define _SORTED_PQ_H
 
 #include <iostream>
 
-#include "exception.h"
 #include "PriorityQueue.h"
 
 
 
 template <class T>
-class UnsortedPQ : public PriorityQueue<T>{
+class SortedPQ : public PriorityQueue<T>{
     private:
         struct Node{
             T data;
@@ -23,9 +22,9 @@ class UnsortedPQ : public PriorityQueue<T>{
 
     public:
 
-        UnsortedPQ( void );
+        SortedPQ( void );
 
-        ~UnsortedPQ( void );
+        ~SortedPQ( void );
 
         bool empty(void);
 
@@ -43,6 +42,6 @@ class UnsortedPQ : public PriorityQueue<T>{
 };
 
 
-#include "UnsortedPQ.tpp"
+#include "SortedPQ.tpp"
 
 #endif

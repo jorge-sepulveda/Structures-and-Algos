@@ -1,10 +1,10 @@
-#include "UnsortedPQ.h"
+#include "SortedPQ.h"
 
 using namespace std;
 
 //Constructor for the Doubling Queue
 template <class T>
-UnsortedPQ<T>::UnsortedPQ(void){
+SortedPQ<T>::SortedPQ(void){
     head = NULL;
     tail = NULL;
     count = 0;
@@ -15,13 +15,13 @@ UnsortedPQ<T>::UnsortedPQ(void){
 
 //puts an item into the back of the queue and resizes if needed
 template <class T>
-void UnsortedPQ<T>::insert(T e){
+void SortedPQ<T>::insert(T e){
     Node* elem = new Node;
     int counter = 0;
     elem->data = e;
 
     if(e <= 0){
-        throw PQException("UnsortedPQ Exception :Cannot add negatives or 0");
+        throw PQException("SortedPQ Exception :Cannot add negatives or 0");
     }
 
     else if(head == NULL && count==0 && tail == NULL){
@@ -55,7 +55,7 @@ void UnsortedPQ<T>::insert(T e){
 
 
 template <class T>
-T UnsortedPQ<T>::minValue(void){
+T SortedPQ<T>::minValue(void){
   Node* current = head;
   int counter = 0;
   T min;
@@ -73,14 +73,14 @@ T UnsortedPQ<T>::minValue(void){
 }
 
 template <class T>
-T UnsortedPQ<T>::removeMin(){
+T SortedPQ<T>::removeMin(){
     Node* current = head;
     Node* target;
     T min = minValue();
     T removedMin;
 
     if(empty()){
-        throw PQException("UnsortedPQ Exception: Empty Stack!");
+        throw PQException("SortedPQ Exception: Empty Stack!");
     }
 
     else if(size()==1){
@@ -137,12 +137,12 @@ T UnsortedPQ<T>::removeMin(){
 
 
 template <class T>
-void UnsortedPQ<T>::printElements(){
+void SortedPQ<T>::printElements(){
     Node* current = head;
     T o;
 
     if (empty()){
-        throw PQException("UnsortedPQ Exception: Empty Stack!");
+        throw PQException("SortedPQ Exception: Empty Stack!");
     }
     while(current!=NULL){
         o = current->data;
@@ -153,7 +153,7 @@ void UnsortedPQ<T>::printElements(){
 
 //returns a bool if it's empty or not.
 template <class T>
-bool UnsortedPQ<T>::empty(){
+bool SortedPQ<T>::empty(){
     if (count == 0) {
         //std::cout << "empty!" << std::endl;
         return true;
@@ -165,16 +165,16 @@ bool UnsortedPQ<T>::empty(){
 
 //size
 template <class T>
-int UnsortedPQ<T>::size( void ){
+int SortedPQ<T>::size( void ){
     if (empty()){
-        throw PQException("UnsortedPQ Exception: Empty Stack!");
+        throw PQException("SortedPQ Exception: Empty Stack!");
     }
     return count;
 }
 
 //destructor
 template <class T>
-UnsortedPQ<T>::~UnsortedPQ(void) {
+SortedPQ<T>::~SortedPQ(void) {
     Node* current = head;
     Node* target;
 
@@ -186,7 +186,7 @@ UnsortedPQ<T>::~UnsortedPQ(void) {
     }
     head = NULL;
     tail = NULL;
-    cout << "DLL PQ destructor called" << endl;
+    cout << "SortedPQ destructor called" << endl;
 
 
 }
