@@ -1,27 +1,27 @@
-#include "SortedPQ.h"
+#include "HeapPQ.h"
 
 using namespace std;
 
 //Constructor for the Doubling Queue
 template <class T>
-SortedPQ<T>::SortedPQ(void){
+HeapPQ<T>::HeapPQ(void){
     head = NULL;
     tail = NULL;
     count = 0;
     //capacity = 0;
-    cout << "made the SortedPQ!" << endl;
+    cout << "made the HeapPQ!" << endl;
 }
 
 
 //puts an item into the back of the queue and resizes if needed
 template <class T>
-void SortedPQ<T>::insert(T e){
+void HeapPQ<T>::insert(T e){
     Node* elem = new Node;
     int counter = 0;
     elem->data = e;
 
     if(e <= 0){
-        throw PQException("SortedPQ Exception :Cannot add negatives or 0");
+        throw PQException("HeapPQ Exception :Cannot add negatives or 0");
     }
 
     if (head == NULL){
@@ -62,20 +62,20 @@ void SortedPQ<T>::insert(T e){
 
 
 template <class T>
-T SortedPQ<T>::minValue(void){
+T HeapPQ<T>::minValue(void){
 
     if(empty()){
-        throw PQException("SortedPQ Exception: Empty Stack!");
+        throw PQException("HeapPQ Exception: Empty Stack!");
     }
 
     return head->data;
 }
 
 template <class T>
-T SortedPQ<T>::removeMin(void){
+T HeapPQ<T>::removeMin(void){
 
     if(empty()){
-        throw PQException("SortedPQ Exception: Empty Stack!");
+        throw PQException("HeapPQ Exception: Empty Stack!");
     }
 
     Node* target = head; 
@@ -91,12 +91,12 @@ T SortedPQ<T>::removeMin(void){
 
 
 template <class T>
-void SortedPQ<T>::printElements(){
+void HeapPQ<T>::printElements(){
     Node* current = head;
     T o;
 
     if (empty()){
-        throw PQException("SortedPQ Exception: Empty Stack!");
+        throw PQException("HeapPQ Exception: Empty Stack!");
     }
     while(current!=NULL){
         o = current->data;
@@ -107,7 +107,7 @@ void SortedPQ<T>::printElements(){
 
 //returns a bool if it's empty or not.
 template <class T>
-bool SortedPQ<T>::empty(){
+bool HeapPQ<T>::empty(){
     if (count == 0) {
         //std::cout << "empty!" << std::endl;
         return true;
@@ -119,16 +119,16 @@ bool SortedPQ<T>::empty(){
 
 //size
 template <class T>
-int SortedPQ<T>::size( void ){
+int HeapPQ<T>::size( void ){
     if (empty()){
-        throw PQException("SortedPQ Exception: Empty Stack!");
+        throw PQException("HeapPQ Exception: Empty Stack!");
     }
     return count;
 }
 
 //destructor
 template <class T>
-SortedPQ<T>::~SortedPQ(void) {
+HeapPQ<T>::~HeapPQ(void) {
     Node* current = head;
     Node* target;
 
@@ -140,7 +140,7 @@ SortedPQ<T>::~SortedPQ(void) {
     }
     head = NULL;
     tail = NULL;
-    cout << "SortedPQ destructor called" << endl;
+    cout << "HeapPQ destructor called" << endl;
 
 
 }
