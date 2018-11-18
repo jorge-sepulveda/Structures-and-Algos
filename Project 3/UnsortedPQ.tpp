@@ -9,7 +9,7 @@ UnsortedPQ<T>::UnsortedPQ(void){
     tail = NULL;
     count = 0;
     //capacity = 0;
-    cout << "made the SortedPQ!" << endl;
+    cout << "made the UnsortedPQ!" << endl;
 }
 
 
@@ -186,7 +186,7 @@ UnsortedPQ<T>::~UnsortedPQ(void) {
     }
     head = NULL;
     tail = NULL;
-    cout << "DLL PQ destructor called" << endl;
+    cout << "UnsortedPQ destructor called" << endl;
 
 
 }

@@ -10,16 +10,9 @@
 template <class T>
 class HeapPQ : public PriorityQueue<T>{
     private:
-        struct Node{
-            T data;
-            Node *next;
-            Node *prev;
-        };
-        Node* head;
-        Node* tail;
+        T *items;
         int count;
-        int pos;
-
+        int capacity;
     public:
 
         HeapPQ( void );
@@ -36,9 +29,17 @@ class HeapPQ : public PriorityQueue<T>{
 
         T minValue(void);
 
-        //void resize()
-
         void printElements();
+
+        void swap(T& x, T& y);
+
+        void heapify( int i );
+
+        int parent(int i) { return (i-1)/2; }
+
+        int left(int i) { return (2*i + 1); }
+
+        int right(int i) { return (2*i + 2); }
 };
 
 
