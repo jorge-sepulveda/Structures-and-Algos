@@ -14,37 +14,57 @@ using namespace std;
 int main(){
 
     try{
-        
+
         srand((unsigned)time(0));
         int random_integer;
-        
+
         CStopWatch whole; //initializing stopwatch instance
         UnsortedPQ<int> upq;
         SortedPQ<int> spq;
         HeapPQ<int> hpq;
-        
+
         whole.Reset();
-        for (int i=1;i<=10;i++){
+        for (int i=1;i<=50000;i++){
             random_integer = (rand()%100)+1;
             upq.insert(random_integer);
         }
         cout << to_string(whole.GetElapsedSeconds()) << "\n";
 
         whole.Reset();
-        
-        for (int i=1;i<=10;i++){
+
+        for (int i=1;i<=50000;i++){
             random_integer = (rand()%100)+1;
             spq.insert(random_integer);
         }
         cout << to_string(whole.GetElapsedSeconds()) << "\n";
         whole.Reset();
-        
-        for (int i=1;i<=10;i++){
+
+        for (int i=1;i<=50000;i++){
             random_integer = (rand()%100)+1;
             hpq.insert(random_integer);
         }
         cout << to_string(whole.GetElapsedSeconds()) << "\n";
 
+        ///////////////////////////////////////////////
+        whole.Reset();
+
+        for (int i=1;i<=25000;i++){
+            upq.removeMin();
+        }
+        cout << to_string(whole.GetElapsedSeconds()) << "\n";
+
+        whole.Reset();
+
+        for (int i=1;i<=25000;i++){
+            spq.removeMin();
+        }
+        cout << to_string(whole.GetElapsedSeconds()) << "\n";
+        whole.Reset();
+
+        for (int i=1;i<=25000;i++){
+            hpq.removeMin();
+        }
+        cout << to_string(whole.GetElapsedSeconds()) << "\n";
 
         //HeapPQ<int> hpq;
 
@@ -58,8 +78,8 @@ int main(){
             myfile.close();
         }
         else cout << "Unable to open file\n";*/
-        
-        
+
+
 
 
 
