@@ -5,11 +5,11 @@ using namespace std;
 //Constructor for the Doubling Queue
 template <class T>
 HeapPQ<T>::HeapPQ(void){
-    items = new T[100];
+    items = new T[100000];
     count = 0;
-    capacity = 100;
+    capacity = 100000;
     //capacity = 0;
-    cout << "made the HeapPQ!" << endl;
+    //cout << "made the HeapPQ!" << endl;
 }
 
 
@@ -28,7 +28,7 @@ void HeapPQ<T>::insert(T e){
     items[i] = e;
 
     // Fix the min heap property if it is violated
-    while (i != 0 && items[parent(i)] >= items[i])
+    while (i != 0 && items[parent(i)] > items[i])
     {
        swap(items[i], items[parent(i)]);
        i = parent(i);
@@ -99,12 +99,6 @@ int HeapPQ<T>::size( void ){
     return count;
 }
 
-template<class T>
-void HeapPQ<T>::printElements(){
-	for (int i=0;i<count;i++)
-		cout<< items[i] << endl;
-}
-
 
 template <class T>
 void HeapPQ<T>::heapify(int i){
@@ -114,7 +108,7 @@ void HeapPQ<T>::heapify(int i){
     if (l < count && items[l] <= items[i]){
         smallest = l;
     }
-    else if (r < count && items[r] < items[smallest]){
+    if (r < count && items[r] < items[smallest]){
         smallest = r;
     }
     if (smallest != i){
@@ -127,7 +121,7 @@ void HeapPQ<T>::heapify(int i){
 template <class T>
 HeapPQ<T>::~HeapPQ(void) {
     delete[] items;
-    cout << "HeapPQ destructor called" << endl;
+    //cout << "HeapPQ destructor called" << endl;
 
 
 }

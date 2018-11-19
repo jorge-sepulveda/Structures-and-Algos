@@ -9,7 +9,7 @@ UnsortedPQ<T>::UnsortedPQ(void){
     tail = NULL;
     count = 0;
     //capacity = 0;
-    cout << "made the UnsortedPQ!" << endl;
+    //cout << "made the UnsortedPQ!" << endl;
 }
 
 
@@ -28,7 +28,7 @@ void UnsortedPQ<T>::insert(T e){
         head = elem;
         tail = elem;
         count++;
-        cout << "started and inserted: " << e << endl;
+        //cout << "started and inserted: " << e << endl;
         return;
     }
     //check if there is only one element
@@ -38,7 +38,7 @@ void UnsortedPQ<T>::insert(T e){
         elem->prev=head;
         tail=elem;
         count++;
-        cout << "inserted: " << e << endl;
+        //cout << "inserted: " << e << endl;
         return;
     }
     //adding to the tail
@@ -48,7 +48,7 @@ void UnsortedPQ<T>::insert(T e){
         elem->prev=tail;
         tail = elem;
         count++;
-        cout << "inserted to the tail: " << e << endl;
+        //cout << "inserted to the tail: " << e << endl;
         return;
     }
 }
@@ -186,7 +186,7 @@ UnsortedPQ<T>::~UnsortedPQ(void) {
     }
     head = NULL;
     tail = NULL;
-    cout << "UnsortedPQ destructor called" << endl;
+    //cout << "UnsortedPQ destructor called" << endl;
 
 
 }

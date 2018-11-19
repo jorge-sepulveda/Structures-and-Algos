@@ -1,6 +1,7 @@
 #include "UnsortedPQ.h"
 #include "SortedPQ.h"
 #include "HeapPQ.h"
+#include "stopwatch.h"
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -8,13 +9,41 @@
 #include <iostream>
 #include <fstream>
 
+using namespace std;
 //
 int main(){
 
     try{
-        UnsortedPQ<int> dpq;
+        
+        srand((unsigned)time(0));
+        int random_integer;
+        
+        CStopWatch whole; //initializing stopwatch instance
+        UnsortedPQ<int> upq;
         SortedPQ<int> spq;
         HeapPQ<int> hpq;
+        
+        whole.Reset();
+        for (int i=1;i<=10;i++){
+            random_integer = (rand()%100)+1;
+            upq.insert(random_integer);
+        }
+        cout << to_string(whole.GetElapsedSeconds()) << "\n";
+
+        whole.Reset();
+        
+        for (int i=1;i<=10;i++){
+            random_integer = (rand()%100)+1;
+            spq.insert(random_integer);
+        }
+        cout << to_string(whole.GetElapsedSeconds()) << "\n";
+        whole.Reset();
+        
+        for (int i=1;i<=10;i++){
+            random_integer = (rand()%100)+1;
+            hpq.insert(random_integer);
+        }
+        cout << to_string(whole.GetElapsedSeconds()) << "\n";
 
 
         //HeapPQ<int> hpq;
@@ -29,28 +58,8 @@ int main(){
             myfile.close();
         }
         else cout << "Unable to open file\n";*/
-
-        hpq.insert(1);
-        hpq.insert(5);
-        hpq.insert(4);
-        hpq.insert(3);
-        hpq.insert(2);
-        hpq.insert(1);
-        hpq.insert(3);
-        hpq.insert(5);
-
-
-
-        cout << "removed: " <<  hpq.removeMin() << endl;
-        cout << "removed: " <<  hpq.removeMin() << endl;
-        cout << "removed: " <<  hpq.removeMin() << endl;
-        cout << "removed: " <<  hpq.removeMin() << endl;
-        cout << "removed: " <<  hpq.removeMin() << endl;
-        cout << "removed: " <<  hpq.removeMin() << endl;
-        //hpq.removeMin();//yee
-
-        hpq.printElements();
-        cout << "removing some mins" << endl;
+        
+        
 
 
 

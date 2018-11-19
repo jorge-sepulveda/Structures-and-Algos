@@ -13,6 +13,7 @@ class HeapPQ : public PriorityQueue<T>{
         T *items;
         int count;
         int capacity;
+        void swap(T& x, T& y);
     public:
 
         HeapPQ( void );
@@ -30,8 +31,6 @@ class HeapPQ : public PriorityQueue<T>{
         T minValue(void);
 
         void printElements();
-
-        void swap(T& x, T& y);
 
         void heapify( int i );
 

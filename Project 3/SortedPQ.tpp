@@ -9,7 +9,7 @@ SortedPQ<T>::SortedPQ(void){
     tail = NULL;
     count = 0;
     //capacity = 0;
-    cout << "made the SortedPQ!" << endl;
+    //cout << "made the SortedPQ!" << endl;
 }
 
 
@@ -140,7 +140,7 @@ SortedPQ<T>::~SortedPQ(void) {
     }
     head = NULL;
     tail = NULL;
-    cout << "SortedPQ destructor called" << endl;
+    //cout << "SortedPQ destructor called" << endl;
 
 
 }
