@@ -18,6 +18,7 @@ Below is the list of every project along with some info for it's implementations
 * Vector - Incremental Array, Fixed Array, Doubling Array, Linked List, Doubly Linked List
 * Stack - Linked List
 * Tree - Link List and it uses recursion
+* Priority Queue - Doubly Linked Lists and Array Based Heap
 
 ## **Running it**
 
