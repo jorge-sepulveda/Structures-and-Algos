@@ -3,7 +3,7 @@
 ## Priority Queues
 
 There are three different implentations of the Priority Queue. An unsorted linked list,
-a sorted linked list and an array based heap. 
+a sorted linked list and an array based heap.
 
 ### initialization
 

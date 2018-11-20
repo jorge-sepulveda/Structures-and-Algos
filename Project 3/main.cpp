@@ -111,6 +111,8 @@ int main(){
 
         //HeapPQ<int> hpq;
 
+
+        //GET text file working!
        /* string line;
         ifstream myfile ("numbers.txt");
         if (myfile.is_open()){
