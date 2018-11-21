@@ -8,6 +8,7 @@
 #include <ctime>
 #include <iostream>
 #include <fstream>
+#include <sstream> 
 
 using namespace std;
 //
@@ -29,6 +30,7 @@ int main(){
 
 
 
+       /* 
         whole.Reset();
         logs << "UnsortedPQ,";
         for (int i=1;i<=50000;i++){
@@ -108,22 +110,65 @@ int main(){
         cout << to_string(whole.GetElapsedSeconds()) << "\n";
 
         logs.close();
+        */
 
-        //HeapPQ<int> hpq;
 
 
         //GET text file working!
-       /* string line;
+        string line;
+        int number;
+        bool firstLine=true;
+        bool secondLine=true;
+        int typePQ;
+        int sizePQ;
+        UnsortedPQ<int> inputfilePQ0;
+        SortedPQ<int> inputfilePQ1;
+        HeapPQ<int> inputfilePQ2;
         ifstream myfile ("numbers.txt");
         if (myfile.is_open()){
             while ( myfile.good() ){
                 getline (myfile,line);
-                cout << line << endl;
+                stringstream stringtoint(line); 
+                
+                if(firstLine){
+                    stringtoint >> typePQ;
+                    firstLine=false;
+                    getline (myfile,line);
+                }
+                if(secondLine){
+                    secondLine=false;
+                    getline(myfile, line);
+                    
+                }
+                stringtoint >> number;
+                if(typePQ==0){
+                    inputfilePQ0.insert(number);
+                }
+                else if(typePQ == 1){
+                    inputfilePQ1.insert(number);
+                }
+                else if(typePQ == 1){
+                    inputfilePQ2.insert(number);
+                }
+                //cout << number << endl;
             }
             myfile.close();
+                if(typePQ==0){
+                    cout << "unsortedPQ" << endl;
+                    inputfilePQ0.printElements();
+                }
+                else if(typePQ == 1){
+                     cout << "sortedPQ" << endl;
+                    inputfilePQ1.printElements();
+                }
+                else if(typePQ == 2){
+                    cout << "heapPQ" << endl;
+                    //inputfilePQ2.printElements();
+                }
         }
-        else cout << "Unable to open file\n";*/
-
+        else cout << "Unable to open file\n";
+        
+        
 
 
 
