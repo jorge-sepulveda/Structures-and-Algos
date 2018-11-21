@@ -37,9 +37,6 @@ class UnsortedPQ : public PriorityQueue<T>{
 
         T minValue(void);
 
-        //void resize()
-
-        void printElements();
 };
 
 

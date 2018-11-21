@@ -30,8 +30,6 @@ class HeapPQ : public PriorityQueue<T>{
 
         T minValue(void);
 
-        void printElements();
-
         void heapify( int i );
 
         int parent(int i) { return (i-1)/2; }

@@ -78,32 +78,17 @@ T SortedPQ<T>::removeMin(void){
         throw PQException("SortedPQ Exception: Empty Stack!");
     }
 
-    Node* target = head; 
-    T removedMin = target->data; 
-    head = head->next; 
-    delete target; 
+    Node* target = head;
+    T removedMin = target->data;
+    head = head->next;
+    delete target;
     count--;
-    if (head == NULL){  
-        tail = NULL; 
+    if (head == NULL){
+        tail = NULL;
     }
     return removedMin;
 }
 
-
-template <class T>
-void SortedPQ<T>::printElements(){
-    Node* current = head;
-    T o;
-
-    if (empty()){
-        throw PQException("SortedPQ Exception: Empty Stack!");
-    }
-    while(current!=NULL){
-        o = current->data;
-        cout << o << endl;
-        current = current->next;
-    }
-}
 
 //returns a bool if it's empty or not.
 template <class T>

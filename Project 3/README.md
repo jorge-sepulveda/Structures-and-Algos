@@ -16,7 +16,6 @@ HeapPQ<T> hpq;
 ### Priority Queue Functions:
   - insert(T e) : inserts e into the Queue
   - removeMin() : removes the minimum
-  - printElements() : prints all the elements in the structures
   - empty() : returns a boolean if there is anything in the Queues
   - size() : returns the current size of the queue
 

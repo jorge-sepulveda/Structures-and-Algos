@@ -26,6 +26,7 @@ void UnsortedPQ<T>::insert(T e){
 
     else if(head == NULL && count==0 && tail == NULL){
         head = elem;
+        elem->prev=NULL;
         tail = elem;
         count++;
         //cout << "started and inserted: " << e << endl;
@@ -46,6 +47,7 @@ void UnsortedPQ<T>::insert(T e){
         //cout << "added to the tail" << endl;
         tail->next=elem;
         elem->prev=tail;
+        elem->next=NULL;
         tail = elem;
         count++;
         //cout << "inserted to the tail: " << e << endl;
@@ -83,7 +85,7 @@ T UnsortedPQ<T>::removeMin(){
         throw PQException("UnsortedPQ Exception: Empty Stack!");
     }
 
-    else if(size()==1){
+    else if(count==1){
         target = head;
         removedMin = target->data;
         head = NULL;
@@ -101,7 +103,7 @@ T UnsortedPQ<T>::removeMin(){
                 head=head->next;
 
                 delete target;
-                //cout << "removed the head: " << mintemp << endl;
+                //cout << "removed the head: " << removedMin << endl;
                 count--;
                 return removedMin;
             }
@@ -112,7 +114,7 @@ T UnsortedPQ<T>::removeMin(){
                 tail=tail->prev;
                 delete target;
                 count--;
-                //cout << "removed the tail: " << mintemp << endl;
+                //cout << "removed the tail: " << removedMin << endl;
                 return removedMin;
 
             }
@@ -121,9 +123,10 @@ T UnsortedPQ<T>::removeMin(){
                 removedMin = target->data;
                 current->prev->next = current->next;
                 current->next->prev=current->prev;
-                //current->next = current->next->next;
+
+
                 delete target;
-                //cout << "removed: " << mintemp << endl;
+                //cout << "removed: " << removedMin << endl;
                 count--;
                 return removedMin;
             }
@@ -136,20 +139,6 @@ T UnsortedPQ<T>::removeMin(){
 }
 
 
-template <class T>
-void UnsortedPQ<T>::printElements(){
-    Node* current = head;
-    T o;
-
-    if (empty()){
-        throw PQException("UnsortedPQ Exception: Empty Stack!");
-    }
-    while(current!=NULL){
-        o = current->data;
-        cout << o << endl;
-        current = current->next;
-    }
-}
 
 //returns a bool if it's empty or not.
 template <class T>

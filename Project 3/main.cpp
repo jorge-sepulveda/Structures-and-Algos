@@ -8,7 +8,7 @@
 #include <ctime>
 #include <iostream>
 #include <fstream>
-#include <sstream> 
+#include <sstream>
 
 using namespace std;
 //
@@ -30,7 +30,6 @@ int main(){
 
 
 
-       /* 
         whole.Reset();
         logs << "UnsortedPQ,";
         for (int i=1;i<=50000;i++){
@@ -110,81 +109,74 @@ int main(){
         cout << to_string(whole.GetElapsedSeconds()) << "\n";
 
         logs.close();
+
+
+
+
+        /**
+         *Down here is where the text file is being read and PQ's are being initialized
+         * depending on the T variable input. It will create the proper PQ and removes
+         * all of it's elements using RemoveMin
         */
 
 
-
-        //GET text file working!
-        string line;
-        int number;
-        bool firstLine=true;
-        bool secondLine=true;
-        int typePQ;
-        int sizePQ;
         UnsortedPQ<int> inputfilePQ0;
         SortedPQ<int> inputfilePQ1;
         HeapPQ<int> inputfilePQ2;
-        ifstream myfile ("numbers.txt");
-        if (myfile.is_open()){
-            while ( myfile.good() ){
-                getline (myfile,line);
-                stringstream stringtoint(line); 
-                
-                if(firstLine){
-                    stringtoint >> typePQ;
-                    firstLine=false;
-                    getline (myfile,line);
-                }
-                if(secondLine){
-                    secondLine=false;
-                    getline(myfile, line);
-                    
-                }
-                stringtoint >> number;
-                if(typePQ==0){
-                    inputfilePQ0.insert(number);
-                }
-                else if(typePQ == 1){
-                    inputfilePQ1.insert(number);
-                }
-                else if(typePQ == 1){
-                    inputfilePQ2.insert(number);
-                }
-                //cout << number << endl;
-            }
-            myfile.close();
-                if(typePQ==0){
-                    cout << "unsortedPQ" << endl;
-                    inputfilePQ0.printElements();
-                }
-                else if(typePQ == 1){
-                     cout << "sortedPQ" << endl;
-                    inputfilePQ1.printElements();
-                }
-                else if(typePQ == 2){
-                    cout << "heapPQ" << endl;
-                    //inputfilePQ2.printElements();
-                }
+
+        int T, N;
+
+        ifstream f;
+
+        f.open("numbers.txt");
+        f >> T >> N;
+
+        int a [N];
+
+        for (int i = 0; i < N; i++) {
+        	f >> a[i];
         }
-        else cout << "Unable to open file\n";
-        
-        
+
+        f.close();
+
+        for (int i = 0; i < N; i++) {
+          if(T==0){
+            inputfilePQ0.insert(a[i]);
+          }
+          else if(T==1){
+            inputfilePQ1.insert(a[i]);
+          }
+          else if(T==2){
+            inputfilePQ2.insert(a[i]);
+          }
+        	//cout << a[i] << endl;
+        }
+
+        if(T==0){
+          cout << "UnsortedPQ " << endl;
+        }
+        else if(T==1){
+          cout << "SortedPQ " << endl;
+        }
+        else if(T==2){
+          cout << "HeapPQ" <<  endl;
+        }
 
 
+        for (int i = 0; i < N; i++) {
+          if(T==0){
+            cout << "removed: " <<  inputfilePQ0.removeMin() << endl;
+          }
+          else if(T==1){
+            cout << "removed: " <<  inputfilePQ1.removeMin() << endl;
+          }
+          else if(T==2){
+            cout << "removed: " <<  inputfilePQ2.removeMin() << endl;
+          }
+        	//cout << a[i] << endl;
+        }
 
 
-
-
-        //cout << "printing list again" << endl;
-        //spq.printElements();
-        //
-
-
-        //cout << dpq.size() << endl;
-        //cout << "the min is " << dpq.minValue() << endl;//check
-
-        //dpq.printElements();
-        //
         return 0;
 
 
