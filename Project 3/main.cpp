@@ -29,6 +29,12 @@ int main(){
         HeapPQ<int> hpq;
 
 
+        /*
+         * Down here are all the insertions into the PQ's and it's removals
+         * The times are being logged into csv file called results.csv
+        */
+
+
 
         whole.Reset();
         logs << "UnsortedPQ,";
