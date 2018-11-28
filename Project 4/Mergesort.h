@@ -43,13 +43,13 @@ Mergesort<T>::Mergesort(T* data, int s){
 }
 
 template <class T>
-void Mergesort<T>::merge(T arr[], int l, int m, int r){
+void Mergesort<T>::merge(T* arr, int l, int m, int r){
     int i, j, k;
     int n1 = m - l + 1;
     int n2 =  r - m;
 
     /* create temp arrays */
-    int L[n1], R[n2];
+    T L[n1], R[n2];
 
     /* Copy data to temp arrays L[] and R[] */
     for (i = 0; i < n1; i++)
@@ -104,7 +104,7 @@ void Mergesort<T>::printArray(){
 }
 
 template <class T>
-void Mergesort<T>::mergesort(T arr[], int l, int r){
+void Mergesort<T>::mergesort(T* arr, int l, int r){
     if (l < r)
     {
         // Same as (l+r)/2, but avoids overflow for
