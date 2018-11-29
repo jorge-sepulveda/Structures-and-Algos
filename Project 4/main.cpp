@@ -7,19 +7,15 @@
 #include "Mergesort.tpp"
 
 using namespace std;
-    
-
-
-
 
 int main(int argc, char const *argv[]) {
-    
+
     srand((unsigned)time(0));
     int random_integer;
     double random_double;
-    
-    
-    int size = 1000000;
+
+
+    unsigned int size = 1000000;
     double* passArray = new double[1000000];
 
     for (int i=0;i<size;i++){
@@ -34,8 +30,7 @@ int main(int argc, char const *argv[]) {
         cout << "->" << passArray[i];
     }*/
     cout << "\n";
-    
+
     delete[] passArray;
     return 0;
 }
-
