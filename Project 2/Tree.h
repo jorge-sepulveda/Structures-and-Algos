@@ -84,7 +84,7 @@ void Tree<T>::insertPrivate(T item, node* n){//start Tree constructor
 		//cout << "added: " << item << " to the root" << endl;
 		count++;
 	}
-	else if(item <= n->data)
+	else if(item < n->data)
 	{
 		if(n->left != NULL)
 		{
@@ -112,7 +112,7 @@ void Tree<T>::insertPrivate(T item, node* n){//start Tree constructor
 	}
 	else
 	{
-		//cout << "item " << item << " is already in the tree\n";
+		cout << "item " << item << " is already in the tree\n";
 	}
 
 

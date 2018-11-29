@@ -25,11 +25,19 @@ int main(){
     Tree<int> t1;
     Tree<double> t2;
     //making the csv file
-    ofstream logs;
-    logs.open("results.csv");
-    logs << "Number of nodes, Int Tree height, Double Tree Height\n";
+    //ofstream logs;
+    //logs.open("results.csv");
+    //logs << "Number of nodes, Int Tree height, Double Tree Height\n";
+    
+    int array[] = {3,8,20,15,30,17,5,35,19,18};
+    
+    for (int i=0;i < 10;i++){
+        t1.insert(array[i]);
+    }
+    
+    t1.levelOrder();
         
-    for (int i = 1; i <= 1000; ++i)
+    /*for (int i = 1; i <= 1000; ++i)
     {
         random_integer = rand() % 10;
         random_double = ((double) rand() / (RAND_MAX));
@@ -40,7 +48,7 @@ int main(){
             logs << i << ", " << t1.maxDepth()-1 << ", " << t2.maxDepth()-1 << "\n";
         }  
     }
-    logs.close();
+    logs.close();*/
 
     //t1.levelOrder();
     //t1.inOrder();

@@ -1,49 +1,9 @@
-#ifndef MERGE_SORT_H
-#define MERGE_SORT_H
-
 #include <iostream>
 
 using namespace std;
 
-/**
- * Note: in order to try to make things easier, the queue below will only have a single type of value
- * in it instead of a (key, value) pair.  You could still store a (key, value) pair, but you would
- * make a priority queue that stored an object with both the key/value in it and a comparison operator
- * that only compared the keys.
- */
-
 template <class T>
-class Mergesort
-{
-private:
-	// data here
-
-
-
-public:
-
-    T* items;
-
-    int size;
-
-    Mergesort(T* data, int s );
-
-    void merge(T arr[], int l, int m, int r);
-
-    void mergesort(T arr[], int l, int r);
-
-    void printArray();
-};
-
-template <class T>
-Mergesort<T>::Mergesort(T* data, int s){
-    cout << "Constructor called" << endl;
-    items = data;
-    size = s;
-}
-
-template <class T>
-void Mergesort<T>::merge(T* arr, int l, int m, int r){
+void merge(T* arr, int l, int m, int r){
     int i, j, k;
     int n1 = m - l + 1;
     int n2 =  r - m;
@@ -97,26 +57,18 @@ void Mergesort<T>::merge(T* arr, int l, int m, int r){
 }
 
 template <class T>
-void Mergesort<T>::printArray(){
-    for(int i=0;i<size;i++){
-        cout << items[i] << endl;
-    }
-}
-
-template <class T>
-void Mergesort<T>::mergesort(T* arr, int l, int r){
-    if (l < r)
+void mergesort(T* array, int left, int right){
+    if (left < right)
     {
         // Same as (l+r)/2, but avoids overflow for
         // large l and h
-        int m = l+(r-l)/2;
+        int middle = left+(right-left)/2;
 
         // Sort first and second halves
-        mergesort(arr, l, m);
-        mergesort(arr, m+1, r);
+        mergesort(array, left, middle);
+        mergesort(array, middle+1, right);
 
-        merge(arr, l, m, r);
+        merge(array, left, middle, right);
     }
 }
 
-#endif

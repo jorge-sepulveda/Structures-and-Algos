@@ -1,22 +1,41 @@
-#include "Mergesort.h"
 #include <iostream>
-
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+#include <fstream>
+#include "Mergesort.tpp"
 
 using namespace std;
+    
+
 
 
 
 int main(int argc, char const *argv[]) {
-    int size = 18;
-    double passArray[] = {5,4,3,2,1, 1,3,4,2,5 ,3,6,7,8,4 ,3,5,6};
+    
+    srand((unsigned)time(0));
+    int random_integer;
+    double random_double;
+    
+    
+    int size = 1000000;
+    double* passArray = new double[1000000];
 
-
-
-    Mergesort<double> m1(passArray, size);
-
-    m1.mergesort(m1.items, 0, m1.size-1);
-
-    m1.printArray();
-    //cout << 0 << endl;
+    for (int i=0;i<size;i++){
+        random_double = ((double) rand() / (RAND_MAX));
+        passArray[i] = random_double;
+        //cout << "->" << passArray[i];
+    }
+    cout << "\n";
+    mergesort(passArray, 0, size-1);
+    cout << "sorted!" << endl;
+    /*for (int i=0;i<size;i++){
+        cout << "->" << passArray[i];
+    }*/
+    cout << "\n";
+    
+    delete[] passArray;
     return 0;
 }
+
