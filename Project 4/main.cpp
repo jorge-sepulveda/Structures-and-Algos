@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include "Mergesort.tpp"
+#include "Quicksort.tpp"
 
 using namespace std;
 

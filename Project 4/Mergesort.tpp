@@ -9,7 +9,9 @@ void merge(T* arr, int l, int m, int r){
     int n2 =  r - m;
 
     /* create temp arrays */
-    T L[n1], R[n2];
+    T* L = new T[n1];
+    T* R = new T[n2];
+    //T L[n1], R[n2];
 
     /* Copy data to temp arrays L[] and R[] */
     for (i = 0; i < n1; i++)
@@ -54,6 +56,9 @@ void merge(T* arr, int l, int m, int r){
         k++;
     }
 
+    delete[] L;
+    delete[] R;
+
 }
 
 template <class T>
@@ -71,4 +76,3 @@ void mergesort(T* array, int left, int right){
         merge(array, left, middle, right);
     }
 }
-
