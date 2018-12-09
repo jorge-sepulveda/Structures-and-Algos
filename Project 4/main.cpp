@@ -24,7 +24,7 @@ int main(int argc, char const *argv[]) {
 
     logs << "Size, qsortdouble, msortdouble, qsortint, msortint\n";
     //1000000
-    for(int i = 50000;i<=1000000;i+=50000){
+    for(int i = 50000;i<=50000;i+=50000){
 
         int* qIntArray = new int[i];
         int* mIntArray = new int[i];
